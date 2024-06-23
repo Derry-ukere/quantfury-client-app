@@ -173,7 +173,7 @@ export const userMOdel = {
 // deposit inplementation;
 
 // https://springtrading.live/api/wallets -- get walets
-export const getWalletResp = {
+export const getWalletRespLocal = {
   current_page: 1,
   data: [
     {
@@ -204,6 +204,54 @@ export const getWalletResp = {
       address: `${WALLETS.usdt} || USDT`,
       QrCode: `${BARCODE.usdtBarcode}`,
       tag: `${WALLETS.usdt}`,
+      type: null,
+      created_at: '2022-03-20T02:51:47.000000Z',
+      updated_at: '2022-03-20T02:51:47.000000Z',
+    },
+  ],
+  first_page_url: 'url.com',
+  from: null,
+  last_page: 1,
+  last_page_url: 'url.com',
+  next_page_url: null,
+  path: 'api/users/auth/signin',
+  per_page: 25,
+  prev_page_url: null,
+  to: null,
+  total: null,
+};
+
+export const getWalletRespServer = {
+  current_page: 1,
+  data: [
+    {
+      address: "BTCWALLETADDRESS",
+      created_at: '2022-03-20T02:51:47.000000Z',
+      fullname: 'Bitcoin',
+      id: 1,
+      QrCode: "BTCBARCODE",
+      symbol: 'BTC',
+      tag: "BTCWALLETADDRESS",
+      updated_at: '2022-03-20T02:51:47.000000Z',
+    },
+    {
+      id: 2,
+      symbol: 'ETH',
+      fullname: 'Ethereum',
+      address: "ETHWALLETADDRESS",
+      QrCode: "ETHBARCODE",
+      tag: "ETHWALLETADDRESS",
+      type: null,
+      created_at: '2022-03-20T02:51:47.000000Z',
+      updated_at: '2022-03-20T02:51:47.000000Z',
+    },
+    {
+      id: 4,
+      symbol: 'USDT',
+      fullname: 'Tether',
+      address: "USDTWALLETADDRESS",
+      QrCode: "USDTWALLETADDRESS",
+      tag: "USDTBARCODE",
       type: null,
       created_at: '2022-03-20T02:51:47.000000Z',
       updated_at: '2022-03-20T02:51:47.000000Z',

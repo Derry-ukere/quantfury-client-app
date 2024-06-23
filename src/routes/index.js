@@ -88,6 +88,7 @@ export default function Router() {
         { path: 'trading/markets', element: <Market /> },
         { path: 'trading/watchlist', element: <WatchList /> },
         { path: 'account-details', element: <StepTwo /> },
+        { path: 'bots', element: <Bots /> },
         // { path: 'signup/step-two', element: <Details /> },
         // { path: 'signup/step-three', element: <Verification /> },
         // { path: 'signup/step-four', element: <Identity /> },
@@ -186,3 +187,5 @@ const UpdateDetails = Loadable(lazy(() => import('../pages/UpdateDetails')));
 const MiningsContracts = Loadable(lazy(() => import('../pages/user/MiningsContracts')));
 const ProfilePhoto = Loadable(lazy(() => import('../pages/user/ProfilePhoto')));
 const Details = Loadable(lazy(() => import('../pages/user/Details')));
+const Bots = Loadable(lazy(() => import('../pages/user/Bots')));
+

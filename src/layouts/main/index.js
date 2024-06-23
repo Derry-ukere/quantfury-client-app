@@ -5,6 +5,7 @@ import { Outlet } from 'react-router-dom';
 
 
 
+
 // components
 import Footer from '../../components/Footer';
 

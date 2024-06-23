@@ -57,6 +57,7 @@ export const { hasError, startLoading, sentVerificationEmail, resetState } = sli
 export function depositFunds(options) {
   return async () => {
     dispatch(slice.actions.startLoading());
+    console.log('options', options)
     const { amountEntered, paymemnetCoin, amountInCrypto, paymentAddress, destinantion, depositId, user,qrCode } = options;
     const auth = getAuth();
     try {
@@ -85,7 +86,7 @@ export function depositFunds(options) {
       });
     } catch (error) {
       const errorMessage = error.message;
-      console.log('error',errorMessage )
+      console.log('error with deposit',errorMessage )
       dispatch(slice.actions.hasError(errorMessage));
     }
    return  depositId;

@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PropTypes, {  } from 'prop-types';
 import { createContext, useEffect, useReducer, useState } from 'react';
 import { initializeApp } from 'firebase/app';
 import {
@@ -12,7 +12,7 @@ import { getFirestore, collection, doc, getDoc, setDoc,serverTimestamp } from 'f
 //
 import { FIREBASE_API } from '../config';
 
-import { computeUserDeposit, computeUserProfit,computeUserWithdrawal } from '../utils/compute';
+import { computeUserDeposit, computeUserProfit,computeUserWithdrawal, } from '../utils/compute';
 
 // ----------------------------------------------------------------------
 
@@ -58,13 +58,17 @@ AuthProvider.propTypes = {
   children: PropTypes.node,
 };
 
-function AuthProvider({ children }) {
+
+
+ function  AuthProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const [profile, setProfile] = useState(null);
   const [deposits, setDeposits] = useState(null);
   const [profits, setProfits] = useState(null);
   const [withdrawal, setWithdrawal] = useState(null);
+
+  
 
 
 
@@ -75,14 +79,12 @@ function AuthProvider({ children }) {
           const deposits = await computeUserDeposit(user.uid);
           const profits = await computeUserProfit(user.uid)
           const withdraws = await computeUserWithdrawal(user.uid)
-          console.log('withdrawal', withdraws)
+         
           setDeposits(deposits);
           setProfits(profits)
           setWithdrawal(withdraws)
           const userRef = doc(DB, 'users', user.uid);
-
           const docSnap = await getDoc(userRef);
-          console.log('user',docSnap.data())
 
           if (docSnap.exists()) {
             setProfile(docSnap.data());
@@ -151,7 +153,7 @@ function AuthProvider({ children }) {
         deposits,
         profits,
         withdrawal,
-        balance : deposits + profits - withdrawal
+        balance : deposits + profits - withdrawal,
       }}
     >
       {children}

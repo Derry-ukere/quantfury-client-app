@@ -12,7 +12,7 @@ import { Alert } from '@mui/material';
 import LoadingButton from '@mui/lab/LoadingButton';
 
 // _mock_
-import { getWalletResp, Destination } from '../../db_design';
+import {getWalletRespServer, Destination } from '../../db_design';
 import { usdToCoin } from '../../utils/cureency-converter';
 
 // redux
@@ -21,20 +21,39 @@ import { depositFunds } from '../../redux/slices/deposit/depositFunds';
 
 import useAuth from '../../hooks/useAuth';
 
+import { getSettingsDetails } from '../../utils/compute';
+
+
 
 const FundAccount = () => {
   const params = useParams();
   const { user } = useAuth();
   const dispatch = useDispatch();
-  const navigate = useNavigate(); 
-  const {  depositComplete, error } = useSelector((state) => state.fundAccountReducer);
-  const { data } = getWalletResp;
+  const navigate = useNavigate();
+  const { depositComplete, error } = useSelector((state) => state.fundAccountReducer);
+  // const { data } = getWalletRespLocal;
+  const { data } = getWalletRespServer;
+
   const [paymentMethod, setPaymentMethod] = React.useState('');
   const [amountEntered, setAmount] = React.useState('');
   const [destinantion, setDestinantion] = React.useState('');
   const uuid = uuidv4();
   const [isLoading, setIsloading] = React.useState(false);
+  const [settings, setSettings] = React.useState({})
+
+  React.useEffect(() => {
+    async function fetchData() {
+      const settingsObject = await getSettingsDetails();
+      setSettings(settingsObject);
+    }
+    fetchData();
+  }, []);
   const depositId = uuid;
+
+  React.useEffect(() => {
+    setAmount(params.amount);
+  }, [params, depositComplete]);
+
 
   React.useEffect(() => {
     setAmount(params.amount);
@@ -53,25 +72,24 @@ const FundAccount = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     setIsloading(true)
-    const paymentAddress = paymentMethod.split(' ')[0];
-    const paymemnetCoin = paymentMethod.split(' ')[2];
 
-    const amountInCrypto = await usdToCoin(amountEntered, paymemnetCoin);
+// const paymentMethod = "USDTWALLETADDRESS";
+const paymentAddress = settings[paymentMethod];
+const barcodeDetails = settings[paymentMethod.replace('WALLETADDRESS', 'BARCODE')];
+const amountInCrypto = await usdToCoin(amountEntered, paymentAddress.walletAddressType);
 
-    
-    const QrCode = data.filter((eachData) => eachData.tag === paymentAddress )
-    
-    const options = {
+// const QrCode = data.filter((eachData) => eachData.tag === paymentAddress) || {}
+
+const options = {
       amountEntered,
-      paymemnetCoin,
+      paymemnetCoin : paymentAddress.walletAddressType      ,
       amountInCrypto,
-      paymentAddress,
+      paymentAddress :  paymentAddress.walletAddress      ,
       destinantion,
       depositId,
-      user : user.displayName,
-      qrCode : QrCode[0].QrCode
+      user: user.displayName,
+      qrCode: barcodeDetails.url,
     };
-
     const depositedId = await dispatch(depositFunds(options));
     setIsloading(false)
     if (depositedId) {
@@ -84,7 +102,7 @@ const FundAccount = () => {
       <main className="app-py-1" style={{ height: '100vh' }}>
         <div className="fade-appear-done fade-enter-done">
           <center>
-            <p style={{ fontWeight: 'bold' }}>FUND YOUR ACCOUNT</p>
+            <p style={{ fontWeight: 'bold', color: 'white' }}>FUND YOUR ACCOUNT</p>
             <p>
               <Link to="/user/deposits/pricing" style={{ fontSize: '19px' }}>
                 VIEW PRICING
@@ -161,14 +179,14 @@ const FundAccount = () => {
                   </div>
                   <br />
                   <div>
-                <LoadingButton type="submit" variant="contained" color='info' className="btn btn-full" loading={isLoading} >
+                    <LoadingButton type="submit" variant="contained" color='info' className="btn btn-full" loading={isLoading} >
                       Proceed
-                </LoadingButton>
+                    </LoadingButton>
                   </div>
                 </form>
               </div>
             </div>
-          </section> 
+          </section>
         </div>
       </main>
     </div>

@@ -63,11 +63,27 @@ export async function computeUserWithdrawal(id) {
       deposits.push(Number(element.amount));
     }); 
 
-    console.log('withdrawals', container)
+   
     const sum = deposits.reduce((partialSum, a) => partialSum + a, 0);
     
     return sum;
   } catch (error) {
     console.error(error);
+  }
+}
+
+
+export async function getSettingsDetails() {
+  const container = {};
+  try {
+    const q = query(collection(DB, 'settings'));
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      container[doc.id] = doc.data();
+    });
+    return container;
+  } catch (error) {
+    console.error(error);
+    throw error; // It's a good practice to rethrow the error or handle it as needed
   }
 }

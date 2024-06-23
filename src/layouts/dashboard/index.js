@@ -6,7 +6,7 @@ import { Link, Outlet } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 
 // components
-import Footer from '../../components/DashboardFooter'; 
+// import Footer from '../../components/DashboardFooter'; 
 import AdminDrawer from '../../components/DashboardDrawer';
 
 // config
@@ -22,6 +22,8 @@ export default function SwipeableTemporaryDrawer() {
   }
   const { user } = useAuth();  
   const { displayName } = user;
+
+ 
   return (
     <div>
       {['left'].map((anchor) => (
@@ -40,7 +42,7 @@ export default function SwipeableTemporaryDrawer() {
                       </li>
                       <li>
                         <Link to="/">
-                        <b className="app-title"><img src= {Appdetails.logoHeader} alt='logo' height={'40px'}  /></b>
+                        <b className="app-title"><img src= {Appdetails.logo} alt='logo' height={'40px'}  /></b>
                         </Link>
                       </li>
                     </ul>
@@ -67,7 +69,7 @@ export default function SwipeableTemporaryDrawer() {
               <Outlet />
             </div>
           </main>
-          <Footer />
+          {/* <Footer /> */}
         </React.Fragment>
       ))}
     </div>

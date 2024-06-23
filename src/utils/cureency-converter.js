@@ -26,25 +26,21 @@ export const usdToCoin = async (usd, paymentMethod) => {
   let amount;
   let result;
 
-  const bnb = currentData.binancecoin.usd;
+ console.log("paymentmethod",paymentMethod)
   const btc = currentData.bitcoin.usd;
   const ethereum = currentData.ethereum.usd;
   const tether = currentData.tether.usd;
 
   switch (paymentMethod) {
-    case 'Bitcoin':
+    case 'BTCWALLETADDRESS':
       result = usd / btc;
       amount = `${result.toFixed(4)} btc`;
       break;
-    case 'Ethereum':
+    case 'ETHWALLETADDRESS':
       result = usd / ethereum;
       amount = `${result.toFixed(4)} eth`;
       break;
-    case 'BNB':
-      result = usd / bnb;
-      amount = `${result.toFixed(4)} bnb`;
-      break;
-    case 'USDT':
+    case 'USDTWALLETADDRESS':
       result = usd / tether;
       amount = `${result.toFixed(4)} usdt`;
       break;
@@ -52,6 +48,7 @@ export const usdToCoin = async (usd, paymentMethod) => {
       break;
   }
 
+  console.log("amount",amount)
   return amount;
 };
  

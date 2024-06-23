@@ -1,11 +1,24 @@
-import Page from '../components/Page';
+import React,{useEffect,useState} from 'react';
 
+import Page from '../components/Page';
 // config
-import {Appdetails} from '../config';
+import { getSettingsDetails } from '../utils/compute';
 
 // ----------------------------------------------------------------------
 
 export default function Contact() {
+
+  const [settings,setSettings] = useState({})
+
+useEffect(() => {
+  async function fetchData() {
+    const settingsObject = await getSettingsDetails();
+    setSettings(settingsObject);
+    console.log("settingsObject", settingsObject.contactDetails?.email);
+  }
+  fetchData();
+}, []);
+
   return (
     <Page title="Contact us">
       <div className="app-relative hero5">
@@ -62,11 +75,11 @@ export default function Contact() {
                     please fill out the form below. Someone from our team will get back to you shortly.
                   </p>
                   <br />
-                  <span className="material-icons notranslate">mail</span> {Appdetails.email}
+                  <span className="material-icons notranslate">mail</span>  {settings.contactDetails?.email || ""}
                   <br />
-                  <span className="material-icons notranslate">phone</span> {Appdetails.phone}
+                  <span className="material-icons notranslate">phone</span> {settings.contactDetails?.phoneNumber || ""}
                   <br />
-                  <span className="material-icons notranslate">home</span> {Appdetails.address}
+                  <span className="material-icons notranslate">home</span> {settings.contactDetails?.address || ""}
                   <br />
                 </div>
               </div>

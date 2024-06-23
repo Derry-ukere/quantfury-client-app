@@ -11,7 +11,6 @@ import useAuth from '../../hooks/useAuth';
 // redux
 import { useDispatch, useSelector } from '../../redux/store';
 import { fetchUserTrades } from '../../redux/slices/trades/userTrades';
-import { depositprofits } from '../../redux/slices/deposit/addprofit';
 
 
 
@@ -28,9 +27,7 @@ const Home = () => {
     dispatch(fetchUserTrades())
   },[])
 
-  // React.useEffect(() => {
-  //   dispatch(depositprofits())
-  // },[]) 
+
 
   React.useEffect(() => {
     if (trades) {
@@ -68,22 +65,22 @@ const Home = () => {
                     <div className="row">
                       <Stack direction={'row'}>
                       <div className="col l6 s6">
-                        <h3 className="notranslate" style={{ margin: '0px', padding: '0px' }}>
+                        <h3 className="notranslate" style={{ margin: '0px', padding: '0px',color:"white" }}>
                           ${balance}
                         </h3>
-                        <span style={{ fontSize: '10px' }}>BALANCE</span>
+                        <span style={{ fontSize: '10px',color:"white" }}>BALANCE</span>
                       </div>
                       <div className="col l6 s6">
-                        <h3 style={{ margin: '0px', padding: '0px' }}>${profits}</h3>
-                        <span style={{ fontSize: '10px' }}>PROFITS</span>
+                        <h3 style={{ margin: '0px', padding: '0px',color:"white" }}>${profits}</h3>
+                        <span style={{ fontSize: '10px',color:"white" }}>PROFITS</span>
                       </div>
                       <div className="col l6 s6">
-                        <h3 style={{ margin: '0px', padding: '0px' }}>${deposits}</h3>
-                        <span style={{ fontSize: '10px' }}>DEPOSIT</span>
+                        <h3 style={{ margin: '0px', padding: '0px',color:"white" }}>${deposits}</h3>
+                        <span style={{ fontSize: '10px',color:"white" }}>DEPOSIT</span>
                       </div>
                       <div className="col l6 s6">
-                        <h3 style={{ margin: '0px', padding: '0px' }}>${withdrawal}</h3>
-                        <span style={{ fontSize: '10px' }}> Withdrawals</span>
+                        <h3 style={{ margin: '0px', padding: '0px',color:"white" }}>${withdrawal}</h3>
+                        <span style={{ fontSize: '10px',color:"white" }}> Withdrawals</span>
                       </div>
                       </Stack>
                     </div>
@@ -91,13 +88,13 @@ const Home = () => {
                     <center>
                       <progress value={Number(user.signalStrenght)} max={100} style={{ width: '80%', display: 'block' }} />
                     </center>
-                    <span style={{ fontSize: '10px' }}>SIGNAL STRENGTH</span>
+                    <span style={{ fontSize: '10px',color:"white" }}>SIGNAL STRENGTH</span>
                     <br />
                     <br />
                   </div>
                   <div className="pc-container row center" style={{ margin: 'auto' }}>
                     <div className="col l6 s4">
-                      <div className="center">
+                      <div className="center" style={{ color: 'white' }}>
                         <Link to="/user/deposits/crypto" style={{ color: 'white' }}>
                           <div
                             style={{
@@ -109,7 +106,7 @@ const Home = () => {
                           >
                             <p
                               className="material-icons notranslate"
-                              style={{ fontSize: '30px', margin: '0px', padding: '0px' }}
+                              style={{ fontSize: '30px', margin: '0px', padding: '0px', }}
                             >
                               attach_money
                             </p>
@@ -121,7 +118,7 @@ const Home = () => {
                       </div>
                     </div>
                     <div className="col l6 s4">
-                      <div className="center">
+                      <div className="center" style={{ color: 'white' }}>
                         <Link to="/user/trading/traders" style={{ color: 'white' }}>
                           <div
                             style={{
@@ -145,7 +142,7 @@ const Home = () => {
                       </div>
                     </div>
                     <div className="col l6 s4">
-                      <div className="center">
+                      <div className="center" style={{ color: 'white' }}>
                         <Link to="/user/trading/markets" style={{ color: 'white' }}>
                           <div
                             style={{
@@ -169,7 +166,7 @@ const Home = () => {
                       </div>
                     </div>
                     <div className="col l6 s4">
-                      <div className="center">
+                      <div className="center" style={{ color: 'white' }}>
                         <Link to="/user/trading/watchlist" style={{ color: 'white' }}>
                           <div
                             style={{
@@ -193,7 +190,7 @@ const Home = () => {
                       </div>
                     </div>
                     <div className="col l6 s4">
-                      <div className="center">
+                      <div className="center" style={{ color: 'white' }}>
                         <Link to="/user/traderoom" style={{ color: 'white' }}>
                           <div
                             style={{
@@ -217,8 +214,8 @@ const Home = () => {
                       </div>
                     </div>
                     <div className="col l6 s4">
-                      <div className="center">
-                        <Link to="/user/ptraderoom" style={{ color: 'white' }}>
+                      <div className="center" style={{ color: 'white' }}>
+                        <Link to="/user/bots" style={{ color: 'white' }}>
                           <div
                             style={{
                               background: 'rgb(82, 82, 152)',
@@ -235,7 +232,7 @@ const Home = () => {
                             </p>
                           </div>
                         </Link>
-                        BINARY OPTIONS
+                        Automated Trading softwares
                         <br />
                         <br />
                       </div>

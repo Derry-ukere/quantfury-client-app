@@ -40,7 +40,7 @@ export default function InReview({account_status}) {
 
     const isValid = account_status === "blocked" || account_status === "suspended" || account_status === "pending"
 
-    console.log('validity', isValid);
+    
 
   return (
     <Page title="SpringIndex" sx={{ height: 1 }}>
@@ -61,12 +61,12 @@ export default function InReview({account_status}) {
             )}
 
             {account_status === 'suspended' && (
-            <Typography sx={{ color: 'text.primary' }}>
+            <Typography >
             Your account has been suspended for violating our terms of service. Contact us at via the chatbox to discuss reinstatement.            </Typography>
             )}
 
             { account_status === 'pending' && (
-            <Typography sx={{ color: 'text.primary' }}>
+            <Typography  >
             Your account is currently in Review. Review process normally takes up to 48hrs.If you have any questions or concerns please contact us via the chatbox</Typography>
             )}
 
