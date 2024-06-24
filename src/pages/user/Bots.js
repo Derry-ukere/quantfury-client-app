@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react';
 import {
   Card,
@@ -8,11 +9,14 @@ import {
   Grid,
   Container,
   CardActions,
-  Avatar,
-  Stack,
+  Box,
 } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import { deepPurple } from '@mui/material/colors';
+
+// redux
+import { useDispatch, useSelector } from '../../redux/store';
+import { getAllBots } from '../../redux/slices/bots/getAllBots';
 
 const useStyles = makeStyles({
   card: {
@@ -26,6 +30,10 @@ const useStyles = makeStyles({
   },
   media: {
     height: 140,
+    width: 140,
+    borderRadius: '50%',
+    margin: 'auto',
+    marginTop: '15px',
   },
   avatar: {
     backgroundColor: deepPurple[500],
@@ -36,83 +44,52 @@ const useStyles = makeStyles({
   button: {
     width: '100%',
   },
+  bio: {
+    marginTop: '15px',
+    marginBottom: '15px',
+  },
 });
 
-const bots = [
-  {
-    Imageurl: 'https://firebasestorage.googleapis.com/v0/b/quantfury-index.appspot.com/o/candidate%2Fundefined%2Ffirst-logo.png?alt=media&token=53ff9188-9a59-4621-a021-d59fde1cf1d1',
-    botName: 'jackpotter',
-    creator: 'Ben T.K',
-    id: 'ab77244f-ca15-4530-890f-5b4dad4ddaef',
-    info: 'The issue with the amount returning undefined might be due to the format of the paymentMethod string you are passing to the function. Specifically, you have double quotes around the BTCWALLETADDRESS case, which might not match the string being passed. Here is the corrected function:',
-    lossRate: '0.02%',
-    subscribers: '3443',
-    totalLosses: '7',
-    totalTrades: '32222',
-    winRate: '99.98%',
-  },
-  {
-    Imageurl: 'https://firebasestorage.googleapis.com/v0/b/quantfury-index.appspot.com/o/candidate%2Fundefined%2Ffirst-logo.png?alt=media&token=53ff9188-9a59-4621-a021-d59fde1cf1d1',
-    botName: 'jackpotter',
-    creator: 'Ben T.K',
-    id: 'ab77244f-ca15-4530-890f-5b4dad4ddaef',
-    info: 'The issue with the amount returning undefined might be due to the format of the paymentMethod string you are passing to the function. Specifically, you have double quotes around the BTCWALLETADDRESS case, which might not match the string being passed. Here is the corrected function:',
-    lossRate: '0.02%',
-    subscribers: '3443',
-    totalLosses: '7',
-    totalTrades: '32222',
-    winRate: '99.98%',
-  },
-  {
-    Imageurl: 'https://firebasestorage.googleapis.com/v0/b/quantfury-index.appspot.com/o/candidate%2Fundefined%2Ffirst-logo.png?alt=media&token=53ff9188-9a59-4621-a021-d59fde1cf1d1',
-    botName: 'jackpotter',
-    creator: 'Ben T.K',
-    id: 'ab77244f-ca15-4530-890f-5b4dad4ddaef',
-    info: 'The issue with the amount returning undefined might be due to the format of the paymentMethod string you are passing to the function. Specifically, you have double quotes around the BTCWALLETADDRESS case, which might not match the string being passed. Here is the corrected function:',
-    lossRate: '0.02%',
-    subscribers: '3443',
-    totalLosses: '7',
-    totalTrades: '32222',
-    winRate: '99.98%',
-  },
-  {
-    Imageurl: 'https://firebasestorage.googleapis.com/v0/b/quantfury-index.appspot.com/o/candidate%2Fundefined%2Ffirst-logo.png?alt=media&token=53ff9188-9a59-4621-a021-d59fde1cf1d1',
-    botName: 'jackpotter',
-    creator: 'Ben T.K',
-    id: 'ab77244f-ca15-4530-890f-5b4dad4ddaef',
-    info: 'The issue with the amount returning undefined might be due to the format of the paymentMethod string you are passing to the function. Specifically, you have double quotes around the BTCWALLETADDRESS case, which might not match the string being passed. Here is the corrected function:',
-    lossRate: '0.02%',
-    subscribers: '3443',
-    totalLosses: '7',
-    totalTrades: '32222',
-    winRate: '99.98%',
-  },
-  {
-    Imageurl: 'https://firebasestorage.googleapis.com/v0/b/quantfury-index.appspot.com/o/candidate%2Fundefined%2Ffirst-logo.png?alt=media&token=53ff9188-9a59-4621-a021-d59fde1cf1d1',
-    botName: 'jackpotter',
-    creator: 'Ben T.K',
-    id: 'ab77244f-ca15-4530-890f-5b4dad4ddaef',
-    info: 'The issue with the amount returning undefined might be due to the format of the paymentMethod string you are passing to the function. Specifically, you have double quotes around the BTCWALLETADDRESS case, which might not match the string being passed. Here is the corrected function:',
-    lossRate: '0.02%',
-    subscribers: '3443',
-    totalLosses: '7',
-    totalTrades: '32222',
-    winRate: '99.98%',
-  },
-];
 
 const BotsList = () => {
+    const dispatch = useDispatch();
+    const { bots } = useSelector((state) => state.allBots);
+    // const { success } = useSelector((state) => state.copyTraderReducer);
+
+    React.useEffect(() => {
+        dispatch(getAllBots())
+      }, [])
+
+    //   React.useEffect(() => {
+    //     if (allTraders) {
+    //       const cloned = allTraders.map((trader) => (
+    //         {
+    //           loading: false,
+    //           copied: trader.subscribers.includes(auth.currentUser.uid),
+    //           wins: trader.wins,
+    //           losses: trader.losses,
+    //           winRate: trader.winRate,
+    //           lossRate: trader.lossRate,
+    //           imageUrl: trader.imageUrl,
+    //           id: trader.id,
+    //           name: trader.name
+    //         }
+    //       ))
+    //       setContainer(cloned)
+    //     }
+    //   }, [allTraders])
+    
+    
   const classes = useStyles();
 
   const handleSubscribe = (botId) => {
-    // eslint-disable-next-line no-alert
-    alert(`Subscribed to bot with ID: ${botId}`);
+    console.log(`Subscribed to bot with ID: ${botId}`);
   };
 
   return (
     <Container className={classes.container}>
-      <Typography variant="h4" gutterBottom align="center" sx={{color: 'white'}}>
-        Bots List
+      <Typography variant="h4" gutterBottom align="center" sx={{color: "white"}}>
+        Ai Powered Trading Bots
       </Typography>
       <Grid container spacing={4}>
         {bots.map((bot) => (
@@ -124,28 +101,17 @@ const BotsList = () => {
                 title={bot.botName}
               />
               <CardContent>
-                <Stack direction="row" spacing={2} alignItems="center">
-                  <Avatar className={classes.avatar}>
-                    {bot.creator.charAt(0)}
-                  </Avatar>
-                  <Typography variant="h6" component="div">
-                    {bot.botName}
+                <Typography variant="h6" component="div" align="center">
+                  {bot.botName}
+                </Typography>
+                <Typography variant="body2" color="textSecondary" align="center">
+                  by {bot.creator}
+                </Typography>
+                <Box className={classes.bio}>
+                  <Typography variant="body2" color="textSecondary">
+                    {bot.info}
                   </Typography>
-                </Stack>
-                <Typography
-                  variant="body2"
-                  color="textSecondary"
-                  component="p"
-                  style={{ marginTop: '10px' }}
-                >
-                  {bot.info}
-                </Typography>
-                <Typography variant="body2" color="textSecondary">
-                  <strong>Creator:</strong> {bot.creator}
-                </Typography>
-                <Typography variant="body2" color="textSecondary">
-                  <strong>Subscribers:</strong> {bot.subscribers}
-                </Typography>
+                </Box>
                 <Typography variant="body2" color="textSecondary">
                   <strong>Win Rate:</strong> {bot.winRate}
                 </Typography>
@@ -165,9 +131,15 @@ const BotsList = () => {
                   size="small"
                   color="primary"
                   onClick={() => handleSubscribe(bot.id)}
-                  variant='outlined'
                 >
                   Subscribe
+                </Button>
+                <Button
+                  className={classes.button}
+                  size="small"
+                  color="secondary"
+                >
+                  {bot.subscribers} Subscribers
                 </Button>
               </CardActions>
             </Card>

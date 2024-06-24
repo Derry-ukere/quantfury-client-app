@@ -35,6 +35,11 @@ import registerTradeReducer from './slices/trades/registerTrade';
 import personalTrades from './slices/trades/personalTrades';
 
 
+// Bots
+import allBots from './slices/bots/getAllBots';
+
+
+
 // ----------------------------------------------------------------------//
 
 const rootPersistConfig = {
@@ -76,6 +81,10 @@ const rootReducer = combineReducers({
   registerTradeReducer,
   userTrades,
   personalTrades,
+
+
+  // bots
+  allBots,
 });
 
 export { rootPersistConfig, rootReducer };
