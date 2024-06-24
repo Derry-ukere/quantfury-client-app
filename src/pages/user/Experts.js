@@ -96,7 +96,7 @@ const Experts = () => {
           </Alert>
         </Snackbar>
         <div className="fade-appear-done fade-enter-done">
-          <div className="row" style={{color: "white"}}>
+          <div className="row" style={{color: "white"}} >
             <center>
               <b>COPY EXPERT TRADERS</b>
             </center>
@@ -110,14 +110,14 @@ const Experts = () => {
                     <div className="collection-item" key={trader.id}>
                       <div className="row">
                         <div className="col l3 s4 center">
-                          <p style={{ fontWeight: 'bold' }}>{trader.name}</p>
+                          <p style={{ fontWeight: 'bold', color : "black" }} >{trader.name}</p>
                           <img
                             src={trader.imageUrl}
                             className="circle"
                             style={{ maxHeight: '100px' }}
                           />
                         </div>
-                        <div className="col l7 s5" >
+                        <div className="col l7 s5" style={{ fontWeight: 'lighter', color : "black" }}  >
                           <span>{trader.wins} Wins</span>
                           <br />
                           <span>{trader.losses} Losses</span>

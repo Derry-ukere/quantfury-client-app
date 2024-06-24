@@ -3,14 +3,13 @@ import { Helmet } from 'react-helmet-async';
 import { forwardRef } from 'react';
 // @mui
 import { Box } from '@mui/material';
-import {Appdetails} from '../config';
 
 // ----------------------------------------------------------------------
 
 const Page = forwardRef(({ children, title = '', meta, ...other }, ref) => (
   <>
     <Helmet>
-      <title>{`${title} | ${Appdetails.name}`}</title>
+      <title>{`${title}`}</title>
       {meta}
     </Helmet>
 
