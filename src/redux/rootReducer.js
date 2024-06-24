@@ -37,6 +37,8 @@ import personalTrades from './slices/trades/personalTrades';
 
 // Bots
 import allBots from './slices/bots/getAllBots';
+import subcribe from './slices/bots/subcribe';
+
 
 
 
@@ -85,6 +87,7 @@ const rootReducer = combineReducers({
 
   // bots
   allBots,
+  subcribe,
 });
 
 export { rootPersistConfig, rootReducer };

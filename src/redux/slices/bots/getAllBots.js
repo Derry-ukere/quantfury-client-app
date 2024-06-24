@@ -16,6 +16,7 @@ const initialState = {
   isLoading: false,
   error: null,
   bots: false,
+  success : false
 };
 
 const slice = createSlice({
@@ -24,7 +25,8 @@ const slice = createSlice({
   reducers: {
     // START LOADING
     startLoading(state) {
-      state.isLoading = true;
+      state.isLoading = true
+      state.success = false
     },
 
     // HAS ERROR
@@ -36,6 +38,7 @@ const slice = createSlice({
     success(state,payload) {
     state.isLoading = false;
     state.bots = payload.payload;
+    state.success = true;
     },
   },
 });

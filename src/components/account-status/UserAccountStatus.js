@@ -43,7 +43,7 @@ export default function InReview({account_status}) {
     
 
   return (
-    <Page title="SpringIndex" sx={{ height: 1 }}>
+    <Page title="Quantfury" sx={{ height: 1 }}>
       <RootStyle>
         <Container component={MotionContainer}>
           <Box sx={{maxWidth : isValid ? 480 : "unset", margin: 'auto', textAlign: 'center' }}>

@@ -10,13 +10,23 @@ import {
   Container,
   CardActions,
   Box,
+  Alert,
+  Snackbar
 } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import { deepPurple } from '@mui/material/colors';
+import { getAuth } from 'firebase/auth';
+import LoadingButton from '@mui/lab/LoadingButton';
+import useAuth from '../../hooks/useAuth';
+
+
+
 
 // redux
 import { useDispatch, useSelector } from '../../redux/store';
 import { getAllBots } from '../../redux/slices/bots/getAllBots';
+import { subscribeBot } from '../../redux/slices/bots/subcribe';
+
 
 const useStyles = makeStyles({
   card: {
@@ -54,45 +64,89 @@ const useStyles = makeStyles({
 const BotsList = () => {
     const dispatch = useDispatch();
     const { bots } = useSelector((state) => state.allBots);
-    // const { success } = useSelector((state) => state.copyTraderReducer);
+    const { success } = useSelector((state) => state.subcribe);
+    const { deposits } = useAuth();
+
+    const auth = getAuth();
+    const [container, setContainer] = React.useState(null)
+    const [error, setError] = React.useState(false);
+
+
 
     React.useEffect(() => {
         dispatch(getAllBots())
       }, [])
 
-    //   React.useEffect(() => {
-    //     if (allTraders) {
-    //       const cloned = allTraders.map((trader) => (
-    //         {
-    //           loading: false,
-    //           copied: trader.subscribers.includes(auth.currentUser.uid),
-    //           wins: trader.wins,
-    //           losses: trader.losses,
-    //           winRate: trader.winRate,
-    //           lossRate: trader.lossRate,
-    //           imageUrl: trader.imageUrl,
-    //           id: trader.id,
-    //           name: trader.name
-    //         }
-    //       ))
-    //       setContainer(cloned)
-    //     }
-    //   }, [allTraders])
+      React.useEffect(() => {
+        if (bots) {
+          const cloned = bots.map((bot) => (
+            {
+              loading: false,
+              subscribed: bot.subscribersList.includes(auth.currentUser.uid),
+              winRate: bot.winRate,
+              lossRate: bot.lossRate,
+              Imageurl: bot.Imageurl,
+              id: bot.id,
+              name: bot.botName,
+              creator: bot.creator,
+              info: bot.info,
+              subscribers :bot.subscribers,
+              subscribersList : bot.subscribersList,
+              totalLosses : bot.totalLosses,
+              totalTrades : bot.totalTrades,
+              
+            }
+          ))
+          setContainer(cloned)
+        }
+      }, [bots])
     
     
   const classes = useStyles();
 
-  const handleSubscribe = (botId) => {
-    console.log(`Subscribed to bot with ID: ${botId}`);
+  const handleSubscribe = (botId, index) => {
+    if ((deposits === 0)) {
+        setError(true)
+        return
+      }
+    const LoadingState = [...container];
+    LoadingState[index].loading = true;
+    setContainer(LoadingState)
+
+    dispatch(subscribeBot(botId)).then((res) => {
+        const LoadingState = [...container];
+        LoadingState[index].loading = false;
+        LoadingState[index].subscribed = res === 'Copied';
+        setContainer(LoadingState)
+      })
   };
+
 
   return (
     <Container className={classes.container}>
+         <Snackbar
+          open={success}
+          autoHideDuration={6000}
+          anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+        >
+          <Alert severity="success" sx={{ width: '100%' }}>
+            successfull
+          </Alert>
+        </Snackbar>
+        <Snackbar
+          open={error}
+          autoHideDuration={6000}
+          anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+        >
+          <Alert severity="error" sx={{ width: '100%' }}>
+            Deposit account before you  subcribe to a Bot
+          </Alert>
+        </Snackbar>
       <Typography variant="h4" gutterBottom align="center" sx={{color: "white"}}>
         Ai Powered Trading Bots
       </Typography>
       <Grid container spacing={4}>
-        {bots.map((bot) => (
+        {container && container.map((bot, index) => (
           <Grid item key={bot.id} xs={12} sm={6} md={4} lg={3}>
             <Card className={classes.card}>
               <CardMedia
@@ -126,14 +180,7 @@ const BotsList = () => {
                 </Typography>
               </CardContent>
               <CardActions>
-                <Button
-                  className={classes.button}
-                  size="small"
-                  color="primary"
-                  onClick={() => handleSubscribe(bot.id)}
-                >
-                  Subscribe
-                </Button>
+                <LoadingButton  className={classes.button} color={bot.subscribed ? 'error' : 'primary'} loading={bot.loading} onClick={() => handleSubscribe(bot.id, index)}>{bot.subscribed ? 'Subscribed' : "Subscribe"}</LoadingButton>
                 <Button
                   className={classes.button}
                   size="small"
