@@ -40,7 +40,7 @@ const Home = () => {
           month: trade.month,
           day: trade.day,
           imageUrl: trade.imageUrl,
-          tradernAME: trade.tradernAME,
+          traderName: trade.traderName,
           positions: trade.positions,
           currencyPair: trade.currencyPair,
           name: trade.name,
@@ -232,7 +232,7 @@ const Home = () => {
                             </p>
                           </div>
                         </Link>
-                        Automated Trading softwares
+                        AI BOTS
                         <br />
                         <br />
                       </div>
@@ -278,7 +278,7 @@ const Home = () => {
                                   <div className="col l1 s1">
                                     <div className="app-trade-icon-container"><img src={trade.imageUrl} alt='' className="app-trade-icon" /></div>
                                   </div>
-                                  <div className="col l6 s6">{trade.positions} {trade.currencyPair}<br />{trade.tradernAME}</div>
+                                  <div className="col l6 s6">{trade.positions} {trade.currencyPair}<br />{trade.traderName}</div>
                                   <div className="col l3 s3"><span style={{color: trade.status === 'WON' ? 'green' : trade.status === 'PENDING' ? 'grey' : 'red' }}>${trade.amount}</span></div>
                                 </div>
                               </li>

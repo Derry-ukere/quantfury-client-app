@@ -8,6 +8,7 @@
 import React from 'react';
 import { getAuth } from 'firebase/auth';
 import { Alert } from '@mui/material';
+import VerifiedIcon from '@mui/icons-material/Verified';
 import Snackbar from '@mui/material/Snackbar';
 import LoadingButton from '@mui/lab/LoadingButton';
 import useAuth from '../../hooks/useAuth';
@@ -42,7 +43,8 @@ const Experts = () => {
           lossRate: trader.lossRate,
           imageUrl: trader.imageUrl,
           id: trader.id,
-          name: trader.name
+          name: trader.name,
+          verified : trader.verified || null,
         }
       ))
       setContainer(cloned)
@@ -94,7 +96,7 @@ const Experts = () => {
           </Alert>
         </Snackbar>
         <div className="fade-appear-done fade-enter-done">
-          <div className="row">
+          <div className="row" style={{color: "white"}}>
             <center>
               <b>COPY EXPERT TRADERS</b>
             </center>
@@ -135,7 +137,7 @@ const Experts = () => {
                         <br />
                         <div className="col l2 s3" >
                           <br />
-                          <p style={{ fontSize: '12px', fontWeight: 'bold', textTransform: 'uppercase' }} />
+                         {trader.verified && <VerifiedIcon color='primary'/>}
                         </div>
                       </div>
                     </div>
