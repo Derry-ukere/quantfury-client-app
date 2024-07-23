@@ -20,7 +20,6 @@ import { useDispatch, useSelector } from '../../redux/store';
 import { depositFunds } from '../../redux/slices/deposit/depositFunds';
 
 import useAuth from '../../hooks/useAuth';
-
 import { getSettingsDetails } from '../../utils/compute';
 
 
