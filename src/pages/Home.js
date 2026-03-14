@@ -10,6 +10,7 @@ import React from 'react';
 import { m, } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Container } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 import Page from '../components/Page';
 import { MotionContainer, MotionViewport, varFade,varZoom } from '../components/animate';
 import { Appdetails } from '../config';
@@ -22,6 +23,7 @@ import { getHomePrices } from '../redux/slices/asserts/asserts'
 // ----------------------------------------------------------------------
 
 export default function Home() {
+  const { t } = useTranslation();
   const { homePrices } = useSelector((state) => state.asserts);
   const dispatch = useDispatch();
 
@@ -55,14 +57,14 @@ export default function Home() {
                       <br />
                       <br />
                     </div>
-                    <m.h1 variants={varFade().inDown} className="white-text">Finance Redefined</m.h1>
-                    <m.p variants={varZoom().inUp} style={{ color: 'rgb(165, 189, 217)' }}>Experience a New Level of Fast Trading and Mining</m.p>
+                    <m.h1 variants={varFade().inDown} className="white-text">{t('home.financeRedefined')}</m.h1>
+                    <m.p variants={varZoom().inUp} style={{ color: 'rgb(165, 189, 217)' }}>{t('home.heroSubtitle')}</m.p>
                     <br />
                     <Link className="btn" to="/signin">
-                      LOGIN ACCOUNT
+                      {t('home.loginAccount')}
                     </Link>
                     <Link className="btn btn-white-trans" to="/signup">
-                      CREATE ACCOUNT
+                      {t('home.createAccount')}
                     </Link>
                     <br />
                     <br />
@@ -120,10 +122,9 @@ export default function Home() {
                       <img src="/assets/images/site/Service2.png" style={{ width: '95px' }} />
                     </div>
                     <m.div variants={varFade().inDown} style={{ flex: '4 1 0%' }}>
-                      <h3>FAST WITHDRAWALS</h3>
+                      <h3>{t('home.fastWithdrawals')}</h3>
                       <p className="app-f2" style={{ marginTop: '4px', marginBottom: '4px' }}>
-                        Withdrawal requests process instantly. You can make as many requests as you want everyday and
-                        without a minimum or limits.
+                        {t('home.fastWithdrawalsDesc')}
                       </p>
                     </m.div>
                   </div>
@@ -137,10 +138,9 @@ export default function Home() {
                       <img src="/assets/images/site/Service1.png" style={{ width: '95px' }} />
                     </div>
                     <div style={{ flex: '4 1 0%' }}>
-                      <h3>FRIENDLY INTERFACE</h3>
+                      <h3>{t('home.friendlyInterface')}</h3>
                       <p className="app-f2" style={{ marginTop: '4px', marginBottom: '4px' }}>
-                        Whether you are a beginner or a professional in the online investment field, we are sure that you
-                        will find our platform easy to use.
+                        {t('home.friendlyInterfaceDesc')}
                       </p>
                     </div>
                   </m.div>
@@ -154,10 +154,9 @@ export default function Home() {
                       <img src="/assets/images/site/Service3.png" style={{ width: '95px' }} />
                     </div>
                     <div style={{ flex: '4 1 0%' }}>
-                      <h3>24/7 SUPPORT</h3>
+                      <h3>{t('home.support247')}</h3>
                       <p className="app-f2" style={{ marginTop: '4px', marginBottom: '4px' }}>
-                        We provide unbeatable support service through ticket system and email to cater your needs and give
-                        a professional, fast and effective response
+                        {t('home.support247Desc')}
                       </p>
                     </div>
                   </m.div>
@@ -183,18 +182,16 @@ export default function Home() {
                   <m.div className="col l6 s12 app-flex-l6 wow fadeInUp slow" style={{ visibility: 'visible' }}
                     variants={varFade().inUp}
                   >
-                    <h2 className="center">Enjoy the ultimate platform</h2>
+                    <h2 className="center">{t(‘home.enjoyPlatform’)}</h2>
                     <p>
-                      Smooth Experience on Any Device. A multichart layout, technical analysis, historical quotes and
-                      beyond. Everything you’re looking for in a platform — on the device of your choice.
+                      {t(‘home.smoothExperience’)}
                     </p>
                     <p>
-                      Whether you prefer trading at your desk or on the go — {Appdetails.name} has got you covered. The
-                      custom-built platform has been adapted for any device you may choose and switching is 100% seamless.
+                      {t(‘home.platformCovered’, { appName: Appdetails.name })}
                     </p>
                     <center>
                       <Link className="btn btn-trans" to="/signin">
-                        Open in Browser
+                        {t(‘home.openInBrowser’)}
                       </Link>
                     </center>
                     <br />
@@ -217,15 +214,13 @@ export default function Home() {
                       className="app-mobile-center wow fadeInUp slow"
                       style={{ fontWeight: 'bold', visibility: 'visible' }}
                     >
-                      Technical Analysis
+                      {t('home.technicalAnalysis')}
                     </h2>
                     <p
                       className="app-mobile-center  wow fadeInUp slow"
                       style={{ fontSize: '16px', visibility: 'visible' }}
                     >
-                      Get the most out of fundamental and technical analysis with our more than 100 most widely-used
-                      technical indicators and widgets. Always stay up-to-date on what is happening in the financial
-                      markets.
+                      {t('home.technicalAnalysisDesc')}
                     </p>
                     <br />
                   </div>
@@ -259,11 +254,10 @@ export default function Home() {
                 <div className="col l6 s12 app-flex-l6">
                   <br />
                   <h2 className="app-mobile-center wow fadeInUp slow" style={{ visibility: 'visible' }}>
-                    Risk Management
+                    {t('home.riskManagement')}
                   </h2>
                   <p className="app-mobile-center wow fadeInUp slow" style={{ visibility: 'visible' }}>
-                    With features like Stop Loss/Take Profit, Negative balance protection and Trailing Stop you can manage
-                    your losses and profits at the levels predetermined by you.
+                    {t('home.riskManagementDesc')}
                   </p>
                   <br />
                 </div>
@@ -273,7 +267,7 @@ export default function Home() {
           <section className=" app-py-3">
             <Container component={MotionViewport} className="container app-py-1">
               <h3 className="center alt-color wow fadeInUp slow" style={{ visibility: 'visible' }}>
-                Three Simple Steps
+                {t('home.threeSimpleSteps')}
               </h3>
               <div className="row">
                 <div className="col l4 s12 app-py-1 wow fadeInUp slow" style={{ display: 'flex', visibility: 'visible' }}>
@@ -283,27 +277,27 @@ export default function Home() {
                   <m.div style={{ flex: '4 1 0%' }}
                     variants={varFade().inUp}
                   >
-                    <h3 className="alt-color">1. Register</h3>Open Account for free in just a few minutes
+                    <h3 className="alt-color">{t('home.step1Title')}</h3>{t('home.step1Desc')}
                   </m.div>
                 </div>
                 <div className="col l4 s12 app-py-1 wow fadeInUp slow" style={{ display: 'flex', visibility: 'visible' }}>
                   <div style={{ flex: '1 1 0%' }}>
                     <img src="/assets/images/site/Step2.png" />
                   </div>
-                  <m.div 
+                  <m.div
                   variants={varFade().inDown}
                   style={{ flex: '4 1 0%' }}>
-                    <h3 className="alt-color"> 2. Deposit</h3>Fund your trading account or purchase mining contracts
+                    <h3 className="alt-color">{t('home.step2Title')}</h3>{t('home.step2Desc')}
                   </m.div>
                 </div>
                 <div className="col l4 s12 app-py-1 wow fadeInUp slow" style={{ display: 'flex', visibility: 'visible' }}>
                   <div style={{ flex: '1 1 0%' }}>
                     <img src="/assets/images/site/Step3.png" />
                   </div>
-                  <m.div 
+                  <m.div
                   variants={varFade().inDown}
                   style={{ flex: '4 1 0%' }}>
-                    <h3 className="alt-color"> 3. Trade</h3>Trade by yourself or copy our expert traders
+                    <h3 className="alt-color">{t('home.step3Title')}</h3>{t('home.step3Desc')}
                   </m.div>
                 </div>
               </div>
@@ -316,26 +310,19 @@ export default function Home() {
               <div className="container">
                 <div>
                   <h2 className="center wow fadeInUp alt-color" style={{ visibility: 'visible' }}>
-                    Why Choose Us
+                    {t('home.whyChooseUs')}
                   </h2>
                   <p className="center wow fadeInUp slow" style={{ visibility: 'visible' }}>
-                    CFDs on Stocks, ETFs, Commodities, Indices, Cryptocurrencies and Forex
+                    {t('home.whyChooseUsSubtitle')}
                   </p>
                   <br />
                   <m.p  
                   variants={varZoom().inUp}
                   className="wow fadeInUp slow" style={{ textAlign: 'justify', visibility: 'visible' }}>
-                    swifyTrading is one of the fastest growing online trading brands in the world. Voted the best mobile
-                    trading platform, we have now expanded our offerings to include CFDs on stocks, ETFs and Forex
-                    trading. First founded in 2013, {Appdetails.name} has grown massively and now has over 40 million members
-                    and counting! The platform itself has also undergone some changes since 2013, and we are constantly
-                    working to ensure it is fast, accurate and easy to use.
+                    {t('home.whyChooseUsDesc1', { appName: Appdetails.name })}
                   </m.p>
                   <p className="wow fadeInUp slow" style={{ textAlign: 'justify', visibility: 'visible' }}>
-                    We have also refined our offering and introduced plenty of new products in our bid to continue giving
-                    our customers the ultimate online trading experience and to help them optimize their investment
-                    portfolio. Now, using our platform, our members can try CFDs on currency pairs, CFDs on stocks, CFDs
-                    on commodities, CFDs on cryptocurrencies, as well as CFDs on ETFs.
+                    {t('home.whyChooseUsDesc2')}
                   </p>
                   <br />
                   <br />
@@ -347,11 +334,11 @@ export default function Home() {
                         <img src="/assets/images/svgs/Toro-Global.svg" style={{ maxHeight: '80px' }} />
                       </div>
                       <div style={{ flex: '4 1 0%' }}>
-                        <h6>Copy Trading</h6>
+                        <h6>{t('home.copyTrading')}</h6>
                         <p>
-                          Select from a list of expert traders, and automatically copy trades.{' '}
+                          {t('home.copyTradingDesc')}{' '}
                           <a className="alt-color" href="/pages/copy-expert-traders">
-                            Learn more
+                            {t('common.learnMore')}
                           </a>
                         </p>
                       </div>
@@ -363,11 +350,11 @@ export default function Home() {
                         <img src="/assets/images/svgs/Toro-Reliable.svg" style={{ maxHeight: '80px' }} />
                       </div>
                       <div style={{ flex: '4 1 0%' }}>
-                        <h6>Trade Forex</h6>
+                        <h6>{t('home.tradeForex')}</h6>
                         <p>
-                          Explore and trade major, minor and exotic currency pairs with efficient spreads{' '}
+                          {t('home.tradeForexDesc')}{' '}
                           <Link className="alt-color" to="/pages/forex-trading">
-                            Learn more
+                            {t('common.learnMore')}
                           </Link>
                         </p>
                       </div>
@@ -379,11 +366,11 @@ export default function Home() {
                         <img src="/assets/images/svgs/Toro-Secured.svg" />
                       </div>
                       <div style={{ flex: '4 1 0%' }}>
-                        <h6>Mine Cryptocurrencies</h6>
+                        <h6>{t('home.mineCryptocurrencies')}</h6>
                         <p>
-                          Mine popular digital/crypto currencies with different algorithms.{' '}
+                          {t('home.mineCryptocurrenciesDesc')}{' '}
                           <a className="alt-color" href="/pages/bitcoin-mining">
-                            Learn more
+                            {t('common.learnMore')}
                           </a>
                         </p>
                       </div>
@@ -395,11 +382,11 @@ export default function Home() {
                         <img src="/assets/images/svgs/Toro-Social.svg" />
                       </div>
                       <div style={{ flex: '4 1 0%' }}>
-                        <h6>CFD Stocks</h6>
+                        <h6>{t('home.cfdStocks')}</h6>
                         <p>
-                          Trade CFDs on stocks of leading companies and industry giants.{' '}
+                          {t('home.cfdStocksDesc')}{' '}
                           <a className="alt-color" href="/pages/stocks-trading">
-                            Learn more
+                            {t('common.learnMore')}
                           </a>
                         </p>
                       </div>
@@ -412,20 +399,15 @@ export default function Home() {
           <section className="app-py-3">
             <div>
               <h2 className="center wow fadeInUp slow" style={{ visibility: 'visible' }}>
-                MINE TOP CRYPTO CURRENCIES
+                {t('home.mineTopCrypto')}
               </h2>
               <br />
               <div className="container">
-                <p className="wow fadeInUp slow" style={{ visibility: 'visible' }}>
-                  Unlike paper money, Bitcoin and other cryptocurrencies are produced mathematically and held digitally.
-                  The people who voluntarily offer their computing power to secure these cryptocurrency networks are
-                  called miners. Cryptocurrencies don’t have a central government or other so-called ‘middlemen’ that
-                  decide about the future of the system.
+                <p className="wow fadeInUp slow" style={{ visibility: ‘visible’ }}>
+                  {t(‘home.mineTopCryptoDesc1’)}
                 </p>
-                <p className="wow fadeInUp slow" style={{ visibility: 'visible' }}>
-                  As miners, we are processing and verifying the transactions of the cryptocurrency ecosystems and keeping
-                  their public transaction history (blockchains) maintained and secure. For this, the mining community is
-                  rewarded with the networks’ transaction fees and newly created coins.
+                <p className="wow fadeInUp slow" style={{ visibility: ‘visible’ }}>
+                  {t(‘home.mineTopCryptoDesc2’)}
                 </p>
               </div>
               <br />
@@ -491,20 +473,17 @@ export default function Home() {
                   style={{ visibility: 'visible', animationDelay: '0.4s' }}
                 >
                   <img src="/assets/images/site/ServiceVector3.png" className="responsive-img" />
-                  <h3 className="h4">Daily Mining Outputs</h3>
+                  <h3 className="h4">{t('home.dailyMiningOutputs')}</h3>
                   <p className="app-mb-2">
-                    Returns made from either trading or mining transactions will be added to your account daily and
-                    automatically.
+                    {t('home.dailyMiningOutputsDesc')}
                   </p>
                 </m.div>
                 <m.div
                   variants={varFade().inLeft} className="app-my-2 col l4 s12 wow fadeInUp" style={{ visibility: 'visible' }}>
                   <img src="/assets/images/site/ServiceVector1.png" className="responsive-img" />
-                  <h3 className="h4">State of the Art Mining</h3>
+                  <h3 className="h4">{t(‘home.stateOfTheArtMining’)}</h3>
                   <p className="app-mb-2">
-                    Productivity is a top notch quality for any investment. So, for every trade action or blockchain
-                    mining algorithm that we offer, we’re providing some of the highest performing systems and softwares
-                    that exist
+                    {t(‘home.stateOfTheArtMiningDesc’)}
                   </p>
                 </m.div>
                 <m.div
@@ -514,10 +493,9 @@ export default function Home() {
                   style={{ visibility: 'visible', animationDelay: '0.2s' }}
                 >
                   <img src="/assets/images/site/ServiceVector2.png" className="responsive-img" />
-                  <h3 className="h4">Diverse Mining Portfolio</h3>
+                  <h3 className="h4">{t('home.diverseMiningPortfolio')}</h3>
                   <p className="app-mb-2">
-                    Choose from a wide range of target assets for trading and over 10 major mining algorithms that cut
-                    across 4 mineable cryptocurrencies
+                    {t('home.diverseMiningPortfolioDesc')}
                   </p>
                 </m.div>
               </Container>
@@ -525,10 +503,9 @@ export default function Home() {
                 <m.div
                   variants={varFade().inRight} className="app-my-2 col l4 s12 wow fadeInUp" style={{ visibility: 'visible' }}>
                   <img src="/assets/images/site/ServiceVector45.png" className="responsive-img" />
-                  <h3 className="h4">Hardware is already running</h3>
+                  <h3 className="h4">{t(‘home.hardwareRunning’)}</h3>
                   <p className="app-mb-2">
-                    Don’t wrestle with rig assembly and hot, noisy miners at home. We have the fastest bitcoin mining
-                    hardware running for you already
+                    {t(‘home.hardwareRunningDesc’)}
                   </p>
                 </m.div>
                 <m.div
@@ -538,9 +515,9 @@ export default function Home() {
                   style={{ visibility: 'visible', animationDelay: '0.2s' }}
                 >
                   <img src="/assets/images/site/ServiceVector55.png" className="responsive-img" />
-                  <h3 className="h4">Intuitive Dashboard</h3>
+                  <h3 className="h4">{t('home.intuitiveDashboard')}</h3>
                   <p className="app-mb-2">
-                    All the financial instruments data and charts that you need, when you need them
+                    {t('home.intuitiveDashboardDesc')}
                   </p>
                 </m.div>
                 <m.div
@@ -550,9 +527,9 @@ export default function Home() {
                   style={{ visibility: 'visible', animationDelay: '0.4s' }}
                 >
                   <img src="/assets/images/site/ServiceVector65.png" className="responsive-img" />
-                  <h3 className="h4">Secure and Private</h3>
+                  <h3 className="h4">{t('home.secureAndPrivate')}</h3>
                   <p className="app-mb-2">
-                    We value the privacy of our users, so we strive to keep collected user data to a minimum level.
+                    {t('home.secureAndPrivateDesc')}
                   </p>
                 </m.div>
               </Container>

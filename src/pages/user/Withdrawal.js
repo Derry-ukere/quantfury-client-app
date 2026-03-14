@@ -2,6 +2,7 @@
 /* eslint-disable arrow-body-style */
 import React from 'react';
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next';
 import { Alert } from '@mui/material';
 
 // comp
@@ -12,6 +13,7 @@ import { useDispatch, useSelector } from '../../redux/store';
 import { getAllWithdrawals } from '../../redux/slices/withdrawals/getWithdrawals';
 
 const Withdrawal = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const { allWithdrawals, error } = useSelector((state) => state.withdrawalsReducer);
 
@@ -26,7 +28,7 @@ const Withdrawal = () => {
         <br />
         <center>
           <Link className="btn" to="/user/withdrawals/new">
-            NEW WITHDRAWAL REQUEST
+            {t('withdrawal.newWithdrawalRequest')}
           </Link>
         </center>
         {
@@ -41,7 +43,7 @@ const Withdrawal = () => {
             <ul className="collection">
               <li className="collection-item app-py-2">
                 <p id="no-data" style={{ textAlign: 'center' }}>
-                  <span className="app-font-normal">NO WITHDRAWALS YET</span>
+                  <span className="app-font-normal">{t('withdrawal.noWithdrawalsYet')}</span>
                 </p>
               </li>
             </ul>
@@ -50,7 +52,7 @@ const Withdrawal = () => {
           )
         }
         <div className="fixed-action-btn" >
-          <Link title="New Withdrawal" className="btn-floating btn-large" id="btn" to="/user/withdrawals/new">
+          <Link title={t('withdrawal.newWithdrawal')} className="btn-floating btn-large" id="btn" to="/user/withdrawals/new">
             <i className="large material-icons notranslate">add</i>
           </Link>
           <div className="tap-target-wrapper" style={{ right: '-337px', bottom: '-312px', position: 'fixed' }}>
@@ -59,12 +61,12 @@ const Withdrawal = () => {
                 className="tap-target-content"
                 style={{ width: '456px', height: '400px', inset: '0px', padding: '56px', verticalAlign: 'bottom' }}
               >
-                <h5>New Withdrawal</h5>
+                <h5>{t('withdrawal.newWithdrawal')}</h5>
               </div>
             </div>
             <div className="tap-target-wave" style={{ top: '344px', left: '344px', width: '112px', height: '112px' }}>
               <a
-                title="New Withdrawal"
+                title={t('withdrawal.newWithdrawal')}
                 className="btn-floating btn-large tap-target-origin"
                 href="/user/withdrawals/new"
               >

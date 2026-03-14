@@ -2,12 +2,14 @@
 import * as React from 'react';
 import { Alert } from '@mui/material';
 import LoadingButton from '@mui/lab/LoadingButton';
+import { useTranslation } from 'react-i18next';
 import useAuth from '../../../hooks/useAuth';
 //
 
 
 const RegisterForm = () => {
   const { register } = useAuth();
+  const { t } = useTranslation();
 
   const [defaultValues, setDefaultValues] = React.useState({
     firstName: '',
@@ -25,7 +27,7 @@ const RegisterForm = () => {
     try {
       const { password, comfirmPassword } = defaultValues;
       if (password !== comfirmPassword) {
-        setError('password does not match');
+        setError(t('auth.passwordNoMatch'));
         setLoading(false);
         return;
       }
@@ -43,7 +45,7 @@ const RegisterForm = () => {
           <input
             id="email"
             name="email"
-            placeholder='Email'
+            placeholder={t('common.email')}
             required
             type="email"
             value={defaultValues.email}
@@ -60,7 +62,7 @@ const RegisterForm = () => {
           <input
             id="password"
             name="password"
-            placeholder='password'
+            placeholder={t('common.password')}
             required
             type="password"
             value={defaultValues.password}
@@ -76,7 +78,7 @@ const RegisterForm = () => {
           <input
             id="comfirm-password"
             name="confirmPassword"
-            placeholder='Comfim Password'
+            placeholder={t('auth.confirmPassword')}
             required
             type="password"
             value={defaultValues.comfirmPassword}
@@ -92,7 +94,7 @@ const RegisterForm = () => {
           <input
             id="firstName"
             name="firstName"
-            placeholder='First Name'
+            placeholder={t('auth.firstName')}
             required
             type="text"
             value={defaultValues.firstName}
@@ -108,7 +110,7 @@ const RegisterForm = () => {
           <input
             id="lastName"
             name="lastName"
-            placeholder='Last Name'
+            placeholder={t('auth.lastName')}
             required
             type="text"
             value={defaultValues.lastName}
@@ -122,7 +124,7 @@ const RegisterForm = () => {
         </div>
         <div>
         <LoadingButton type="submit"  variant="contained"  color='info' className="btn btn-full" loading = {loading}>
-          Sign Up
+          {t('common.signUp')}
         </LoadingButton>
         </div>
       </form>

@@ -1,4 +1,5 @@
 import React,{useEffect,useState} from 'react';
+import { useTranslation } from 'react-i18next';
 
 import Page from '../components/Page';
 // config
@@ -9,6 +10,7 @@ import { getSettingsDetails } from '../utils/compute';
 export default function Contact() {
 
   const [settings,setSettings] = useState({})
+  const { t } = useTranslation();
 
 useEffect(() => {
   async function fetchData() {
@@ -24,7 +26,7 @@ useEffect(() => {
       <div className="app-relative hero5">
         <div className="overlay2" />
         <div className="fade-appear-done fade-enter-done" style={{ paddingBottom: '6rem', paddingTop: '2rem' }}>
-          <h1 className="center app-relative white-text">Contact Us</h1>
+          <h1 className="center app-relative white-text">{t('contact.title')}</h1>
           <p className="app-relative center white-text" />
         </div>
       </div>
@@ -39,12 +41,12 @@ useEffect(() => {
                   <div className="row app-py-0">
                     <div className="col l6 s12">
                       <div className="input-field">
-                        <input type="text" id="name" placeholder="Name" required  />
+                        <input type="text" id="name" placeholder={t('contact.name')} required  />
                       </div>
                     </div>
                     <div className="col l6 s12">
                       <div className="input-field">
-                        <input type="email" id="email" placeholder="email" required  />
+                        <input type="email" id="email" placeholder={t('common.email')} required  />
                       </div>
                     </div>
                   </div>
@@ -52,7 +54,7 @@ useEffect(() => {
                     <div className="col l12 s12">
                       <div className="input-field">
                         <textarea
-                          placeholder="message"
+                          placeholder={t('contact.message')}
                           type="text"
                           id="body"
                           className="materialize-textarea"
@@ -61,7 +63,7 @@ useEffect(() => {
                     </div>
                     <div>
                       <button type="submit" className="btn btn-full">
-                        SEND
+                        {t('common.send')}
                       </button>
                     </div>
                   </div>
@@ -71,8 +73,7 @@ useEffect(() => {
                 <div className="container ">
                   <br />
                   <p>
-                    We are always open and we welcome and questions you have for our team. If you wish to get in touch,
-                    please fill out the form below. Someone from our team will get back to you shortly.
+                    {t('contact.description')}
                   </p>
                   <br />
                   <span className="material-icons notranslate">mail</span>  {settings.contactDetails?.email || ""}

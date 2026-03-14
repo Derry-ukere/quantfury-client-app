@@ -1,15 +1,17 @@
 /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
 /* eslint-disable arrow-body-style */
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import Page from '../components/Page';
 import Hero from '../components/PageHeroSection';
 
 const ForexTrading = () => {
+  const { t } = useTranslation();
   return (
     <Page title="Forex Trading">
       <Hero
-        title="Forex Trading"
-        desc="Trade forex on the platform and enjoy reliable pricing and exceptional execution"
+        title={t('forex.title')}
+        desc={t('forex.heroDesc')}
       />
       <main className style={{ minHeight: '80vh' }}>
         <section className="container app-py-3 fade-appear-done fade-enter-done">

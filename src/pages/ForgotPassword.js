@@ -5,6 +5,7 @@ import React from 'react';
 import { Alert } from '@mui/material';
 import Snackbar from '@mui/material/Snackbar';
 import LoadingButton from '@mui/lab/LoadingButton';
+import { useTranslation } from 'react-i18next';
 
 // redux
 import { useDispatch,useSelector } from '../redux/store';
@@ -12,6 +13,7 @@ import { sendResetPasswordEmail,handleClose } from '../redux/slices/user/resetPa
 
 
 const ForgotPassword = () => {
+  const { t } = useTranslation();
   const { sentRestPasswordEmail, error, isLoading } = useSelector((state) => state.resetPassword);
 
   const [email, setEmail] = React.useState('')
@@ -46,7 +48,7 @@ const ForgotPassword = () => {
           anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
         >
           <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
-             Email sent !! check mail box or spam folder..
+             {t('auth.emailSent')}
           </Alert>
         </Snackbar>
       <div className="row app-py-0 fade-appear-done fade-enter-done">
@@ -57,18 +59,18 @@ const ForgotPassword = () => {
             <center>
               <br />
               <div>
-                <p>please enter the email address attached to your account below</p>
+                <p>{t('auth.resetPasswordPrompt')}</p>
                 <form autoComplete="off" onSubmit={sendResetPaswword}>
                   <div className="input-field">
                     <label className="active" htmlFor="email">
-                      email
+                      {t('common.email')}
                     </label>
                     <input type="email" id="email" name="email" autoComplete="new-email" required value = {email} onChange = {(e) => setEmail(e.target.value)} />
                   </div>
                   <br />
                   <div>
                     <LoadingButton type="submit"  variant="contained"  color='info' className="btn btn-full" loading = {isLoading}>
-                      Submit
+                      {t('common.submit')}
                     </LoadingButton>
                   </div>
                 </form>

@@ -1,9 +1,11 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable arrow-body-style */
-import React from 'react'; 
+import React from 'react';
 import {Link} from 'react-router-dom'
+import { useTranslation } from 'react-i18next';
 
 const Mining = () => {
+  const { t } = useTranslation();
   return (
     <main className="app-py-1" style={{ height: '100vh' }}>
       <div className="fade-appear-done fade-enter-done">
@@ -13,17 +15,17 @@ const Mining = () => {
               <div className="container">
                 <div className="center">
                   <h2 style={{ margin: '0px', padding: '0px', fontWeight: 'bold' }}>$0.00</h2>
-                  <span style={{ fontSize: '11px' }}>MINING BALANCE</span>
+                  <span style={{ fontSize: '11px' }}>{t('miningPage.miningBalance')}</span>
                   <br />
                 </div>
                 <div className="container">
                   <br />
                   <ul className="collection">
                     <Link className="collection-item bg center app-py-1" to="/user/mining/contracts">
-                      <li style={{ fontSize: '13px' }}>MY MINING CONTRACTS</li>
+                      <li style={{ fontSize: '13px' }}>{t('miningPage.myMiningContracts')}</li>
                     </Link>
                     <Link className="collection-item bg center app-py-1" to="/user/deposits/crypto">
-                      <li style={{ fontSize: '13px' }}>BUY MINING CONTRACT</li>
+                      <li style={{ fontSize: '13px' }}>{t('miningPage.buyMiningContract')}</li>
                     </Link>
                     <li className="collection-item bg">
                       <div className="row">
@@ -110,13 +112,13 @@ const Mining = () => {
                 <li className="tab col s6">
                   <a className href="/user">
                     <span className="material-icons notranslate">assessment</span>
-                    <span>Trading</span>
+                    <span>{t('dashboard.trading')}</span>
                   </a>
                 </li>
                 <li className="tab col s6">
                   <a className="active" href="/user">
                     <span className="material-icons notranslate">copyright</span>
-                    <span>Mining</span>
+                    <span>{t('dashboard.mining')}</span>
                   </a>
                 </li>
               </ul>

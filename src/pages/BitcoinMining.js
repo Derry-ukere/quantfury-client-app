@@ -1,13 +1,15 @@
 /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
 /* eslint-disable arrow-body-style */
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import Page from '../components/Page';
 import Hero from '../components/PageHeroSection';
 
 const ForexTrading = () => {
+  const { t } = useTranslation();
   return (
     <Page title="About Mining">
-      <Hero title="Bitcoin Mining" desc="Your Bitcoin Mining Portfolio" />
+      <Hero title={t('nav.bitcoinMining')} desc={t('mining.yourBitcoinMiningPortfolio')} />
       <main className style={{ minHeight: '80vh' }}>
         <section className="container app-py-3 fade-appear-done fade-enter-done">
           <div className="card-panel">
@@ -20,7 +22,7 @@ const ForexTrading = () => {
               </span>
               <span>
                 {' '}
-                WHY IS MINING SO IMPORTANT
+                {t('mining.whyMiningImportant')}
                 <br />
               </span>
               <span>
@@ -54,7 +56,7 @@ const ForexTrading = () => {
               </span>
               <span>
                 {' '}
-                HOW IS BITCOIN KEPT SECURE
+                {t('mining.howBitcoinSecure')}
                 <br />
               </span>
               <span>
@@ -80,7 +82,7 @@ const ForexTrading = () => {
               </span>
               <span>
                 {' '}
-                WHAT ARE THE INCENTIVES FOR MINERS
+                {t('mining.minerIncentives')}
                 <br />
               </span>
               <span>
@@ -106,7 +108,7 @@ const ForexTrading = () => {
               </span>
               <span>
                 {' '}
-                THE BIG VISION OF CRYPTO CURRENCY
+                {t('mining.bigVision')}
                 <br />
               </span>
               <span>

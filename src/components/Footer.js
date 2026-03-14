@@ -2,11 +2,14 @@
 /* eslint-disable react/jsx-no-comment-textnodes */
 import React,{useEffect,useState} from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import {Appdetails} from '../config';
 import { getSettingsDetails } from '../utils/compute';
+import LanguageSwitcher from './LanguageSwitcher';
 
 
 function Footer() {
+const { t } = useTranslation();
 const [settings,setSettings] = useState({})
 
 useEffect(() => {
@@ -29,12 +32,14 @@ useEffect(() => {
           </div> 
           <div className="col l4 s12 app-mobile-center">
             <br />
-            <h3 style={{ marginBottom: '15px' }}>Quick Links</h3>
-            <Link to="/pages/contact">Contact Us</Link>
+            <h3 style={{ marginBottom: '15px' }}>{t('footer.quickLinks')}</h3>
+            <Link to="/pages/contact">{t('common.contactUs')}</Link>
             <br />
-            <Link to="/signin">My Account</Link>
+            <Link to="/signin">{t('footer.myAccount')}</Link>
             <br />
-            <Link to="/signup">Create Account</Link>
+            <Link to="/signup">{t('footer.createAccount')}</Link>
+            <br /><br />
+            <LanguageSwitcher />
           </div>
         </div>
       </div>

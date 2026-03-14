@@ -2,6 +2,7 @@
 /* eslint-disable consistent-return */
 /* eslint-disable react/prop-types */
 import * as React from 'react';
+import { useTranslation } from 'react-i18next';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -19,7 +20,8 @@ import DepositComp from './WithdrawCom';
 
 
 
-export default function BasicTable({users}) {    
+export default function BasicTable({users}) {
+    const { t } = useTranslation();
     const [dep, setDep] = React.useState([])
     const dispatch = useDispatch();
 
@@ -36,7 +38,7 @@ export default function BasicTable({users}) {
         })
     }
 
-  const headers = ['Details','Status', 'Address']
+  const headers = [t('tradersTable.details'), t('tradersTable.status'), t('tradersTable.address')]
   React.useEffect(()=>{
     if(users){
       // console.log('withdrawals', users)
@@ -46,8 +48,8 @@ export default function BasicTable({users}) {
           deleted : false,
           amount : users.amount,
           from: users.from,
-          status : users.status  || ' no status',
-          walletAddress : users.walletAddress || "no address", 
+          status : users.status  || t('tradersTable.status'),
+          walletAddress : users.walletAddress || t('tradersTable.address'), 
           isApproved: users.isApproved,
           id:users.id
         }
@@ -82,7 +84,7 @@ export default function BasicTable({users}) {
               </TableCell>
               <TableCell align="left" >{user.status}</TableCell>
               <TableCell align="left" >{user.walletAddress}</TableCell>
-              <TableCell align="center"><LoadingButton  variant="outlined"  disabled = {user.deleted} loading = {user.loading} onClick = {() => deleteWithdraw(user.id, index)}>{user.deleted ? 'Cancelled': "Cancel Withdrawal"}</LoadingButton> </TableCell>
+              <TableCell align="center"><LoadingButton  variant="outlined"  disabled = {user.deleted} loading = {user.loading} onClick = {() => deleteWithdraw(user.id, index)}>{user.deleted ? t('withdrawal.cancelled'): t('withdrawal.cancelWithdrawal')}</LoadingButton> </TableCell>
             </TableRow>
           ))}
         </TableBody>

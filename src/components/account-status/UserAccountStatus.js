@@ -2,6 +2,7 @@
 import PropTypes from 'prop-types';
 import { m } from 'framer-motion';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 // @mui
 import { styled } from '@mui/material/styles';
 import { Box, Button, Typography, Container } from '@mui/material';
@@ -30,6 +31,7 @@ const RootStyle = styled('div')(({ theme }) => ({
 // ------------------------------------------  //
 
 export default function InReview({account_status}) {
+    const { t } = useTranslation();
     const {logout} = useAuth();
     const navigate = useNavigate();
 
@@ -50,10 +52,10 @@ export default function InReview({account_status}) {
             <m.div variants={varBounce().in}>
               <Typography variant="h3" paragraph>
                 {account_status === "void" && ('')}
-                {account_status === "pending" && ('Account  In Review')}
-                {account_status === "suspended" && ('Account suspended')}
-                {account_status === "blocked" && ('Account Blocked')} 
-                {account_status === "declined" && ('KYC DECLINED')} 
+                {account_status === "pending" && (t('accountStatus.inReview'))}
+                {account_status === "suspended" && (t('accountStatus.suspended'))}
+                {account_status === "blocked" && (t('accountStatus.blocked'))} 
+                {account_status === "declined" && (t('accountStatus.kycDeclined'))} 
               </Typography>
             </m.div>
             {account_status === 'void' && (
@@ -62,24 +64,22 @@ export default function InReview({account_status}) {
 
             {account_status === 'suspended' && (
             <Typography >
-            Your account has been suspended for violating our terms of service. Contact us at via the chatbox to discuss reinstatement.            </Typography>
+            {t('accountStatus.suspendedMsg')}            </Typography>
             )}
 
             { account_status === 'pending' && (
             <Typography  >
-            Your account is currently in Review. Review process normally takes up to 48hrs.If you have any questions or concerns please contact us via the chatbox</Typography>
+            {t('accountStatus.pendingMsg')}</Typography>
             )}
 
             {account_status === 'blocked' && (
             <Typography sx={{ color: 'red' }}>
-            Your account has been blocked. If you have any questions or concerns please contact us via the chatbox </Typography>
+            {t('accountStatus.blockedMsg')} </Typography>
             )}
 
             {account_status === 'declined' && (
             <Typography sx={{ color: 'red', paddingX : {sm : 12, md : 20} }}>
-                    Your account application has been declined. 
-                    To proceed with the account opening process, please submit valid and legitimate Identity. 
-                    ID card should be cleary scanned.            
+                    {t('accountStatus.declinedMsg')}
             </Typography>
             )}
 
@@ -93,7 +93,7 @@ export default function InReview({account_status}) {
              </div>)}
             <>
             <Button  size="large" variant="contained"  style={{marginTop : 8}} component={RouterLink} onClick={handleClick}>
-              Go to Home
+              {t('common.goToHome')}
             </Button>
             </>
           </Box>

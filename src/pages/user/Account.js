@@ -1,13 +1,15 @@
 /* eslint-disable arrow-body-style */
 import React from 'react';
 import {Link} from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const Account = () => {
+  const { t } = useTranslation();
   return (
     <main className="app-py-1" style={{ height: '100vh' }}>
       <div className="fade-appear-done fade-enter-done">
         <br />
-        <h1 className="center">Settings</h1>
+        <h1 className="center">{t('settings.title')}</h1>
         <br />
         <div className="container">
           <div className="row">
@@ -31,7 +33,7 @@ const Account = () => {
                         person
                       </span>
                     </div>
-                    My Profile
+                    {t('settings.myProfile')}
                   </li>
                 </Link>
                 <Link className="collection-item bg" to="/user/auth/address">
@@ -52,7 +54,7 @@ const Account = () => {
                         home
                       </span>
                     </div>
-                    Update Address
+                    {t('settings.updateAddress')}
                   </li>
                 </Link>
                 <Link className="collection-item bg" to="/user/auth/password">
@@ -73,7 +75,7 @@ const Account = () => {
                         lock
                       </span>
                     </div>
-                    Change Password
+                    {t('settings.changePassword')}
                   </li>
                 </Link>
                 <Link className="collection-item bg" to="/user/signup/step-four">
@@ -94,7 +96,7 @@ const Account = () => {
                         verified_user
                       </span>
                     </div>
-                    Account Verifications
+                    {t('settings.accountVerifications')}
                   </li>
                 </Link>
                 <Link className="collection-item bg" to="/user/upload-profile-photo">
@@ -115,7 +117,7 @@ const Account = () => {
                         verified_user
                       </span>
                     </div>
-                    Upload Profile Photo
+                    {t('settings.uploadProfilePhoto')}
                   </li>
                 </Link>
               </ul>

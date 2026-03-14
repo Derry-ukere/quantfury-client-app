@@ -3,11 +3,13 @@
 import React from 'react';
 import { Alert } from '@mui/material';
 import LoadingButton from '@mui/lab/LoadingButton';
+import { useTranslation } from 'react-i18next';
 import useAuth from '../../../hooks/useAuth';
 
 
 const LoginForm = () => {
   const { login } = useAuth();
+  const { t } = useTranslation();
 
   const [defaultValues, setDefaultValues] = React.useState({
     email: '',
@@ -33,7 +35,7 @@ const LoginForm = () => {
       {error && <Alert severity="error">{error}</Alert>}
       <form encType="multipart/form-data" onSubmit={onSubmit}>
         <div className="input-field">
-          <label htmlFor="email">email</label>
+          <label htmlFor="email">{t('common.email')}</label>
           <input
             id="email"
             name="email"
@@ -49,7 +51,7 @@ const LoginForm = () => {
           />
         </div>
         <div className="input-field">
-          <label htmlFor="password">password</label>
+          <label htmlFor="password">{t('common.password')}</label>
           <input
             id="password"
             name="password"
@@ -66,7 +68,7 @@ const LoginForm = () => {
         </div>
         <div>
         <LoadingButton type="submit"  variant="contained"  color='info' className="btn btn-full" loading = {loading}>
-          Sign In
+          {t('common.signIn')}
         </LoadingButton>
         </div>
       </form>

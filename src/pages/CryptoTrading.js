@@ -1,15 +1,17 @@
 /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
 /* eslint-disable arrow-body-style */
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import Page from '../components/Page';
 import Hero from '../components/PageHeroSection';
 import { Appdetails } from '../config';
 
 
 const ForexTrading = () => {
+  const { t } = useTranslation();
   return (
     <Page title="Crypto Trading">
-      <Hero title="Crypto Trading" desc="Trade Top Cryptocurrencies" />
+      <Hero title={t('crypto.title')} desc={t('crypto.heroDesc')} />
       <main className style={{ minHeight: '80vh' }}>
         <section className="container app-py-3 fade-appear-done fade-enter-done">
           <div className="card-panel">

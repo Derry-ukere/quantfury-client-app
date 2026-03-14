@@ -5,6 +5,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { getAuth } from 'firebase/auth';
 import { Stack } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 import useAuth from '../../hooks/useAuth';
 
 
@@ -16,6 +17,7 @@ import { fetchUserTrades } from '../../redux/slices/trades/userTrades';
 
 
 const Home = () => {
+  const { t } = useTranslation();
   const { deposits, balance,user, profits,withdrawal } = useAuth(); 
   const { trades, error } = useSelector((state) => state.userTrades);
  const [container, setContainer] = React.useState()
@@ -68,19 +70,19 @@ const Home = () => {
                         <h3 className="notranslate" style={{ margin: '0px', padding: '0px',color:"white" }}>
                           ${balance}
                         </h3>
-                        <span style={{ fontSize: '10px',color:"white" }}>BALANCE</span>
+                        <span style={{ fontSize: '10px',color:"white" }}>{t('dashboard.balance')}</span>
                       </div>
                       <div className="col l6 s6">
                         <h3 style={{ margin: '0px', padding: '0px',color:"white" }}>${profits}</h3>
-                        <span style={{ fontSize: '10px',color:"white" }}>PROFITS</span>
+                        <span style={{ fontSize: '10px',color:"white" }}>{t('dashboard.profits')}</span>
                       </div>
                       <div className="col l6 s6">
                         <h3 style={{ margin: '0px', padding: '0px',color:"white" }}>${deposits}</h3>
-                        <span style={{ fontSize: '10px',color:"white" }}>DEPOSIT</span>
+                        <span style={{ fontSize: '10px',color:"white" }}>{t('dashboard.deposit')}</span>
                       </div>
                       <div className="col l6 s6">
                         <h3 style={{ margin: '0px', padding: '0px',color:"white" }}>${withdrawal}</h3>
-                        <span style={{ fontSize: '10px',color:"white" }}> Withdrawals</span>
+                        <span style={{ fontSize: '10px',color:"white" }}>{t('dashboard.withdrawals')}</span>
                       </div>
                       </Stack>
                     </div>
@@ -88,7 +90,7 @@ const Home = () => {
                     <center>
                       <progress value={Number(user.signalStrenght)} max={100} style={{ width: '80%', display: 'block' }} />
                     </center>
-                    <span style={{ fontSize: '10px',color:"white" }}>SIGNAL STRENGTH</span>
+                    <span style={{ fontSize: '10px',color:"white" }}>{t('dashboard.signalStrength')}</span>
                     <br />
                     <br />
                   </div>
@@ -112,7 +114,7 @@ const Home = () => {
                             </p>
                           </div>
                         </Link>
-                        FUND ACCOUNT
+                        {t('dashboard.fundAccount')}
                         <br />
                         <br />
                       </div>
@@ -136,7 +138,7 @@ const Home = () => {
                             </p>
                           </div>
                         </Link>
-                        COPY EXPERTS
+                        {t('dashboard.copyExperts')}
                         <br />
                         <br />
                       </div>
@@ -160,7 +162,7 @@ const Home = () => {
                             </p>
                           </div>
                         </Link>
-                        ASSET MARKETS
+                        {t('dashboard.assetMarkets')}
                         <br />
                         <br />
                       </div>
@@ -184,7 +186,7 @@ const Home = () => {
                             </p>
                           </div>
                         </Link>
-                        SAVED ASSETS
+                        {t('dashboard.savedAssets')}
                         <br />
                         <br />
                       </div>
@@ -208,7 +210,7 @@ const Home = () => {
                             </p>
                           </div>
                         </Link>
-                        TRADING ROOM
+                        {t('dashboard.tradingRoom')}
                         <br />
                         <br />
                       </div>
@@ -232,7 +234,7 @@ const Home = () => {
                             </p>
                           </div>
                         </Link>
-                        AI BOTS
+                        {t('dashboard.aiBots')}
                         <br />
                         <br />
                       </div>
@@ -245,13 +247,13 @@ const Home = () => {
                       <li className="tab col s6">
                         <Link to="#closed" className="active">
                           <span className="material-icons notranslate">hourglass_full</span>
-                          <span>Closed</span>
+                          <span>{t('dashboard.closed')}</span>
                         </Link>
                       </li>
                       <li className="tab col s6">
                         <Link to="#open">
                           <span className="material-icons notranslate">hourglass_top</span>
-                          <span>Active </span>
+                          <span>{t('dashboard.active')}</span>
                         </Link>
                       </li>
                       <li className="indicator" style={{ left: '0px', right: '398px' }} />
@@ -264,7 +266,7 @@ const Home = () => {
                           !container ? (
                             <li className="collection-item app-py-2">
                             <p id="no-data" style={{ textAlign: 'center' }}>
-                              <span className="app-font-normal">NO DATA</span>
+                              <span className="app-font-normal">{t('common.noData')}</span>
                               <p style={{color:"red"}}>{error}</p>
                             </p>
                           </li>
@@ -292,7 +294,7 @@ const Home = () => {
                       <ul className="collection">
                         <li className="collection-item app-py-2">
                           <p id="no-data" style={{ textAlign: 'center' }}>
-                            <span className="app-font-normal">NO OPEN POSITIONS</span>
+                            <span className="app-font-normal">{t('dashboard.noOpenPositions')}</span>
                           </p>
                         </li>
                       </ul>
@@ -307,13 +309,13 @@ const Home = () => {
                 <li className="tab col s6">
                   <Link className="active" to="/user">
                     <span className="material-icons notranslate">assessment</span>
-                    <span>Trading</span>
+                    <span>{t('dashboard.trading')}</span>
                   </Link>
                 </li>
                 <li className="tab col s6">
                   <Link className to="/user">
                     <span className="material-icons notranslate">copyright</span>
-                    <span>Mining</span>
+                    <span>{t('dashboard.mining')}</span>
                   </Link>
                 </li>
               </ul>

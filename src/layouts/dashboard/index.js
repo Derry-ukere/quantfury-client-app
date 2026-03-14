@@ -2,18 +2,21 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import * as React from 'react';
 import { Link, Outlet } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 // Hooks
 import useAuth from '../../hooks/useAuth';
 
 // components
 // import Footer from '../../components/DashboardFooter'; 
 import AdminDrawer from '../../components/DashboardDrawer';
+import LanguageSwitcher from '../../components/LanguageSwitcher';
 
 // config
 import {Appdetails} from '../../config';
 
 
 export default function SwipeableTemporaryDrawer() {
+  const { t } = useTranslation();
   const [state, setState] = React.useState(false);
 
 
@@ -48,18 +51,13 @@ export default function SwipeableTemporaryDrawer() {
                     </ul>
                     <ul className="right hide-on-med-and-down">
                       <li>
-                        <Link to="/pages/contact">Contact Us</Link>
+                        <Link to="/pages/contact">{t('common.contactUs')}</Link>
                       </li>
                       <li>
                         <Link to="/">{displayName}</Link>
                       </li>
 
-                      <li className="dropdown-trigger" data-target="translator">
-                        <a>
-                          <span className="flag-icon flag-icon-us flag-icon-rounded" />{' '}
-                          <span className="hide-on-small-only">en</span>
-                        </a>
-                      </li>
+                      <li><LanguageSwitcher /></li>
                     </ul>
                   </div>
                 </nav>

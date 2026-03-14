@@ -3,6 +3,9 @@ import { BrowserRouter } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { Provider as ReduxProvider } from 'react-redux';
 
+// i18n
+import './locales/i18n';
+
 //
 import App from './App';
 import reportWebVitals from './reportWebVitals';

@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import Page from '../components/Page';
 import LoginForm from '../sections/auth/login/LoginForm';
 import {Appdetails} from '../config';
@@ -8,6 +9,7 @@ import {Appdetails} from '../config';
 // ----------------------------------------------------------------------
 
 export default function Signin() {
+  const { t } = useTranslation();
   return (
     <Page title="Sign in">
       <>
@@ -35,10 +37,10 @@ export default function Signin() {
                   <LoginForm />
                   <br />
                   <p>
-                    <Link to="/password">Forgot Password?</Link>
+                    <Link to="/password">{t('auth.forgotPassword')}</Link>
                   </p>
                   <p>
-                    Dont have an account? <Link to="/signup">Sign Up</Link>
+                    {t('auth.dontHaveAccount')} <Link to="/signup">{t('common.signUp')}</Link>
                   </p>
                 </center>
               </div>

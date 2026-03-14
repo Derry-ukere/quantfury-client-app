@@ -1,15 +1,17 @@
 /* eslint-disable react/jsx-no-target-blank */
 /* eslint-disable arrow-body-style */
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 const BuyCrypto = () => {
+  const { t } = useTranslation();
   return (
     <div>
       <main className="app-py-1" style={{ height: '100vh' }}>
         <div className="fade-appear-done fade-enter-done">
           <section className="center">
-            <h2>BUY CRYPTO</h2>
-            <p>buy bitcoin, ethereum, and other crypto currencies for account funding from third parties</p>
+            <h2>{t('buyCrypto.title')}</h2>
+            <p>{t('buyCrypto.description')}</p>
             <br />
             <br />
             <div className="container">
