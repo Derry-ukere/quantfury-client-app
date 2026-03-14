@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable array-callback-return */
 /* eslint-disable consistent-return */
 /* eslint-disable react/prop-types */
@@ -57,7 +58,7 @@ export default function BasicTable({users}) {
       console.log('cloned', cloned)
       setDep(cloned)
     }
-  },[users])
+  },[ users])
 
   
   return (
