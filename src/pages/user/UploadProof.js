@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { Alert,Typography } from '@mui/material';
 import Snackbar from '@mui/material/Snackbar';
 import LoadingButton from '@mui/lab/LoadingButton';
+import { useTranslation } from 'react-i18next';
 import { UploadAvatar } from '../../components/upload';
 
 
@@ -13,6 +14,7 @@ import { useDispatch, useSelector } from '../../redux/store';
 import { uploadPaymentProof } from '../../redux/slices/uploads/uploadPaymentProof';
 
 const UploadProof = () => {
+  const { t } = useTranslation();
   const params = useParams();
   const dispatch = useDispatch();
   const { error, isLoading, success } = useSelector((state) => state.uploadPaymentProofReducer);
@@ -50,7 +52,7 @@ const UploadProof = () => {
           anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
         >
           <Alert severity="success" sx={{ width: '100%' }}>
-            Your Details have been uploaded successly !
+            {t('uploadProof.uploadSuccess')}
           </Alert>
         </Snackbar>
         {
@@ -63,7 +65,7 @@ const UploadProof = () => {
         <div className="fade-appear-done fade-enter-done">
           <section className="container row">
             <div className="col l6 s12 offset-l3">
-              <h4 className="center">Upload Payment Proof</h4>
+              <h4 className="center">{t('uploadProof.title')}</h4>
               <br />
               <div className="card-panel">
                 <form encType="multipart/form-data" onSubmit={uploadFIle}>
@@ -84,8 +86,8 @@ const UploadProof = () => {
                               color: 'text.secondary',
                             }}
                           >
-                            Allowed *.jpeg, *.jpg, *.png, *.gif
-                            <br /> max size of 5mb
+                            {t('uploadProof.helperText')}
+                            <br /> {t('uploadProof.maxSize')}
                           </Typography>
                         }
                     />
@@ -93,7 +95,7 @@ const UploadProof = () => {
                   </div>
                   <div>
                     <LoadingButton type="submit" variant="contained" color='info' className="btn btn-full" loading={isLoading}>
-                      upload payment proof
+                      {t('uploadProof.uploadButton')}
                     </LoadingButton>
                   </div>
                 </form>

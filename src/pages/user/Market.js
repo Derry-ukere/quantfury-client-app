@@ -4,6 +4,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable arrow-body-style */
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import {cryto, currencies ,stocks} from '../../utils/mock'
 import CrytpAsserts from '../../components/CryptoAssert';
 
@@ -11,6 +12,7 @@ import {getAllCryproPrices} from "../../utils/cureency-converter";
 
 
 const Market = () => {
+  const { t } = useTranslation();
   const [AssertsState, setAssertState] = React.useState(cryto)
   const [crypto, setCrypto] = React.useState([])
 
@@ -47,9 +49,9 @@ const Market = () => {
             <center>
               <div style={{ marginRight: '1px', marginTop: '4px', marginBottom: '0px', display: 'inline-block' }}>
                 <select id="market" className="browser-default" onChange={handleChange}>
-                  <option value="Crypto">Crypto</option>
-                  <option value="Currencies">Currencies</option>
-                  <option value="Stocks">Stocks</option>
+                  <option value="Crypto">{t('market.crypto')}</option>
+                  <option value="Currencies">{t('market.currencies')}</option>
+                  <option value="Stocks">{t('market.stocks')}</option>
                 </select>
               </div>
             </center>

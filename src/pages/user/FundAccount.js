@@ -12,19 +12,20 @@ import { Alert } from '@mui/material';
 import LoadingButton from '@mui/lab/LoadingButton';
 
 // _mock_
+import { useTranslation } from 'react-i18next';
 import {getWalletRespServer, Destination } from '../../db_design';
 import { usdToCoin } from '../../utils/cureency-converter';
 
 // redux
 import { useDispatch, useSelector } from '../../redux/store';
 import { depositFunds } from '../../redux/slices/deposit/depositFunds';
-
 import useAuth from '../../hooks/useAuth';
 import { getSettingsDetails } from '../../utils/compute';
 
 
 
 const FundAccount = () => {
+  const { t } = useTranslation();
   const params = useParams();
   const { user } = useAuth();
   const dispatch = useDispatch();
@@ -101,15 +102,15 @@ const options = {
       <main className="app-py-1" style={{ height: '100vh' }}>
         <div className="fade-appear-done fade-enter-done">
           <center>
-            <p style={{ fontWeight: 'bold', color: 'white' }}>FUND YOUR ACCOUNT</p>
+            <p style={{ fontWeight: 'bold', color: 'white' }}>{t('fundAccount.title')}</p>
             <p>
               <Link to="/user/deposits/pricing" style={{ fontSize: '19px' }}>
-                VIEW PRICING
+                {t('fundAccount.viewPricing')}
               </Link>
             </p>
             <p>
               <Link to="/user/deposits/buy" style={{ fontSize: '19px' }}>
-                BUY CRYPTO NOW
+                {t('fundAccount.buyCryptoNow')}
               </Link>
             </p>
             <br />
@@ -123,7 +124,7 @@ const options = {
                     <div className="input-field">
                       <span className=" prefix">USD</span>
                       <label className="active" htmlFor="amount">
-                        amount
+                        {t('fundAccount.amount')}
                       </label>
                       <input
                         inputMode="decimal"
@@ -140,7 +141,7 @@ const options = {
                   </div>
                   <div className="input-field">
                     <FormControl fullWidth>
-                      <InputLabel id="demo-simple-select-label">Payment Method</InputLabel>
+                      <InputLabel id="demo-simple-select-label">{t('fundAccount.paymentMethod')}</InputLabel>
                       <Select
                         labelId="demo-simple-select-label"
                         id="demo-simple-select"
@@ -159,7 +160,7 @@ const options = {
                   </div>
                   <div className="input-field">
                     <FormControl fullWidth>
-                      <InputLabel id="demo-simple-select-label">Destination</InputLabel>
+                      <InputLabel id="demo-simple-select-label">{t('fundAccount.destination')}</InputLabel>
                       <Select
                         labelId="demo-simple-select-label"
                         id="demo-simple-select"
@@ -179,7 +180,7 @@ const options = {
                   <br />
                   <div>
                     <LoadingButton type="submit" variant="contained" color='info' className="btn btn-full" loading={isLoading} >
-                      Proceed
+                      {t('fundAccount.proceed')}
                     </LoadingButton>
                   </div>
                 </form>

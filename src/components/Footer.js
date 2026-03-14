@@ -33,8 +33,6 @@ useEffect(() => {
           <div className="col l4 s12 app-mobile-center">
             <br />
             <h3 style={{ marginBottom: '15px' }}>{t('footer.quickLinks')}</h3>
-            <Link to="/pages/contact">{t('common.contactUs')}</Link>
-            <br />
             <Link to="/signin">{t('footer.myAccount')}</Link>
             <br />
             <Link to="/signup">{t('footer.createAccount')}</Link>

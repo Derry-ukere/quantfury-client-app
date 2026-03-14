@@ -7,12 +7,14 @@ import { getAuth, updatePassword } from "firebase/auth";
 // redux
 import { Alert } from '@mui/material';
 import Snackbar from '@mui/material/Snackbar';
+import { useTranslation } from 'react-i18next';
 
 const ChangePassword = () => {
-  
+  const { t } = useTranslation();
+
   const [newPassword, setNewPassword] = React.useState('')
   const [comfirmPassword, setcomfirmPassword] = React.useState('')
-  const [successText, setSuccessText] = React.useState('Password succesfully updated')
+  const [successText, setSuccessText] = React.useState('passwordUpdated')
   const [severity, setSeverity] = React.useState('success')
   const [open, setOpen] = React.useState(false);
 
@@ -21,7 +23,7 @@ const ChangePassword = () => {
         e.preventDefault()
         if (newPassword !== comfirmPassword){
           setSeverity('error');
-          setSuccessText('Password must Match')
+          setSuccessText('passwordMustMatch')
           setOpen(true);
           return
         }
@@ -49,7 +51,7 @@ const ChangePassword = () => {
           anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
         >
           <Alert onClose={handleClose} severity={severity} sx={{ width: '100%' }}>
-            {successText}
+            {t(`changePassword.${successText}`)}
           </Alert>
         </Snackbar>
   <main className="container" style={{height: '100vh'}}>
@@ -60,10 +62,10 @@ const ChangePassword = () => {
           <center>
             <form autoComplete="off" onSubmit={handleSubmit}>
               <div className="input-field">
-                <input type="password" id="new_password" name="new_password" autoComplete="new-password" required  value={newPassword} onChange = {(e) => setNewPassword(e.target.value)}/><label className="active" htmlFor="new_password">new password</label></div>
+                <input type="password" id="new_password" name="new_password" autoComplete="new-password" required  value={newPassword} onChange = {(e) => setNewPassword(e.target.value)}/><label className="active" htmlFor="new_password">{t('changePassword.newPassword')}</label></div>
               <div className="input-field">
-                <input type="password" id="confirm_new_password" name="confirm_new_password" autoComplete="new-password" required value={comfirmPassword} onChange = {(e) => setcomfirmPassword(e.target.value)} /><label className="active" htmlFor="confirm_new_password">confirm new password</label></div><br />
-              <div><button type="submit" className="btn btn-full">Update</button></div>
+                <input type="password" id="confirm_new_password" name="confirm_new_password" autoComplete="new-password" required value={comfirmPassword} onChange = {(e) => setcomfirmPassword(e.target.value)} /><label className="active" htmlFor="confirm_new_password">{t('changePassword.confirmNewPassword')}</label></div><br />
+              <div><button type="submit" className="btn btn-full">{t('changePassword.update')}</button></div>
             </form>
           </center>
         </div>

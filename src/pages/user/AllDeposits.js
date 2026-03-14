@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 // comp
 import DepositComp from '../../components/DepositSingle';
 
@@ -8,6 +9,7 @@ import { useDispatch, useSelector } from '../../redux/store';
 import { getAllDeposits } from '../../redux/slices/deposit/getDeposits';
 
 const AllDeposits = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const { allDeposits, error, isLoading } = useSelector((state) => state.getDepositsReducer);
   React.useEffect(() => {
@@ -22,18 +24,18 @@ const AllDeposits = () => {
             <div className="col l8 s12">
               <center>
                 <Link className="btn " to="/user/deposits/crypto">
-                  NEW DEPOSIT
+                  {t('deposits.newDeposit')}
                 </Link>
               </center>
               <h2>{error}</h2>
               <ul className="collection app-mx-1">
                 <li className="collection-item">
-                  Deposits will be pending until there are sufficent confirmations on the blockchain.
+                  {t('deposits.pendingMessage')}
                   <span style={{ float: 'right', cursor: 'pointer' }}>X</span>
                 </li>
               </ul>
               {
-                isLoading && <div> fetching all deposits ... </div>
+                isLoading && <div> {t('deposits.fetchingDeposits')} </div>
               }
               <ul className="collection">
                 {allDeposits &&
@@ -59,7 +61,7 @@ const AllDeposits = () => {
                       style={{ maxHeight: '30vh' }}
                       alt="omage"
                     />
-                    <h2 style={{ margin: '0px', padding: '0px' }}>Deposit</h2>
+                    <h2 style={{ margin: '0px', padding: '0px' }}>{t('deposits.deposit')}</h2>
                   </center>
                 </li>
               </ul>

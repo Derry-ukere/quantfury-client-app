@@ -242,5 +242,161 @@
   },
   "languageSwitcher": {
     "language": "Lingua"
+  },
+  "deposits": {
+    "newDeposit": "NUOVO DEPOSITO",
+    "noDepositYet": "NESSUN DEPOSITO ANCORA",
+    "deposit": "Deposito",
+    "pendingMessage": "I depositi saranno in sospeso fino a quando non ci saranno sufficienti conferme sulla blockchain.",
+    "fetchingDeposits": "recupero di tutti i depositi ..."
+  },
+  "fundAccount": {
+    "title": "FINANZIA IL TUO ACCOUNT",
+    "viewPricing": "VISUALIZZA PREZZI",
+    "buyCryptoNow": "COMPRA CRYPTO ORA",
+    "amount": "importo",
+    "paymentMethod": "Metodo di Pagamento",
+    "destination": "Destinazione",
+    "proceed": "Procedi"
+  },
+  "confirmDeposit": {
+    "send": "INVIA",
+    "toWalletAddress": "ALL'INDIRIZZO WALLET QUI SOTTO O SCANSIONA IL CODICE QR CON LA TUA APP WALLET",
+    "awaitingPayment": "In attesa di pagamento",
+    "uploadPaymentProof": "CARICA PROVA DI PAGAMENTO",
+    "waitForConfirmation": "ATTENDI CONFERMA",
+    "copied": "Copiato !"
+  },
+  "tradingPlans": {
+    "title": "Piani di Trading",
+    "starterPackage": "PACCHETTO STARTER",
+    "premiumPackage": "PACCHETTO PREMIUM",
+    "masterPackage": "PACCHETTO MASTER",
+    "proPackage": "PACCHETTO PRO",
+    "minimum": "minimo",
+    "minDeposit": "Deposito Min",
+    "maxDeposit": "Deposito Max",
+    "referralBonus": "Bonus Referral",
+    "fullItSupport": "Supporto IT Completo",
+    "purchasePlan": "ACQUISTA PIANO"
+  },
+  "miningPlans": {
+    "title": "Piani di Mining",
+    "weekContract1": "Contratto 1 Settimana",
+    "weekContract2": "Contratto 2 Settimane",
+    "weekContract3": "Contratto 3 Settimane",
+    "weekContract4": "Contratto 4 Settimane"
+  },
+  "pricing": {
+    "title": "Prezzi",
+    "tradingPlans": "Piani di Trading",
+    "miningPlans": "Piani di Mining"
+  },
+  "traderRoom": {
+    "home": "HOME",
+    "binaryOptions": "OPZIONI BINARIE",
+    "crypto": "Crypto",
+    "currencies": "Valute",
+    "stocks": "Azioni",
+    "simple": "Semplice",
+    "technical": "Tecnico",
+    "buy": "COMPRA",
+    "sell": "VENDI",
+    "time": "tempo (minuti)",
+    "amount": "importo",
+    "deposit": "Deposito",
+    "depositBeforeTrade": "Deposita nel tuo account prima di effettuare un trade !"
+  },
+  "experts": {
+    "title": "COPIA TRADER ESPERTI",
+    "loadingTraders": "caricamento trader ...",
+    "wins": "Vittorie",
+    "losses": "Perdite",
+    "winRate": "Tasso di Vittoria",
+    "profitShare": "20% Condivisione Profitti",
+    "copied": "Copiato",
+    "copyTrader": "Copia Trader",
+    "depositBeforeCopy": "Deposita nel tuo account prima di copiare un trader !"
+  },
+  "bots": {
+    "title": "Bot di Trading con IA",
+    "successful": "operazione riuscita",
+    "depositBeforeSubscribe": "Deposita nel tuo account prima di iscriverti a un Bot",
+    "winRate": "Tasso di Vittoria:",
+    "lossRate": "Tasso di Perdita:",
+    "totalTrades": "Trade Totali:",
+    "totalLosses": "Perdite Totali:",
+    "subscribed": "Iscritto",
+    "subscribe": "Iscriviti",
+    "subscribers": "Iscritti",
+    "by": "di"
+  },
+  "watchList": {
+    "title": "LISTA PREFERITI"
+  },
+  "miningContracts": {
+    "title": "I MIEI CONTRATTI MINING",
+    "noContracts": "NON HAI NESSUN CONTRATTO MINING AL MOMENTO"
+  },
+  "market": {
+    "crypto": "Crypto",
+    "currencies": "Valute",
+    "stocks": "Azioni"
+  },
+  "changePassword": {
+    "newPassword": "nuova password",
+    "confirmNewPassword": "conferma nuova password",
+    "update": "Aggiorna",
+    "passwordMustMatch": "Le password devono corrispondere",
+    "passwordUpdated": "Password aggiornata con successo"
+  },
+  "details": {
+    "yourDetails": "I Tuoi Dati",
+    "country": "paese",
+    "state": "stato/provincia",
+    "city": "città",
+    "postCode": "codice postale",
+    "streetAddress": "indirizzo",
+    "mobileNumber": "numero di cellulare",
+    "next": "Avanti",
+    "updateDetails": "Aggiorna Dati",
+    "updateSuccess": "I tuoi dati sono stati aggiornati con successo"
+  },
+  "profile": {
+    "email": "email",
+    "mobileNumber": "numero di cellulare",
+    "name": "Nome",
+    "postCode": "codice postale",
+    "city": "città",
+    "state": "stato/provincia",
+    "country": "paese"
+  },
+  "profilePhoto": {
+    "title": "Carica Foto Profilo",
+    "helperText": "Carica Foto Profilo -- Formati consentiti *.jpeg, *.jpg, *.png, *.gif",
+    "maxSize": "dimensione massima 1mb",
+    "upload": "carica",
+    "uploadSuccess": "La tua foto profilo è stata caricata con successo !"
+  },
+  "uploadProof": {
+    "title": "Carica Prova di Pagamento",
+    "helperText": "Formati consentiti *.jpeg, *.jpg, *.png, *.gif",
+    "maxSize": "dimensione massima 5mb",
+    "uploadButton": "carica prova di pagamento",
+    "uploadSuccess": "I tuoi dati sono stati caricati con successo !"
+  },
+  "identity": {
+    "title": "Verifica la Tua Identità",
+    "description": "Verifica la tua identità caricando un documento d'identità valido rilasciato dal governo. Potresti riscontrare difficoltà durante il caricamento da un dispositivo iOS. Assicurati che il tuo browser abbia accesso alla fotocamera nelle impostazioni iOS.",
+    "frontId": "Carica fronte documento -- Formati consentiti *.jpeg, *.jpg, *.png, *.gif",
+    "backId": "Carica retro documento -- Formati consentiti *.jpeg, *.jpg, *.png, *.gif",
+    "maxSize": "dimensione massima 1mb",
+    "upload": "Carica"
+  },
+  "verification": {
+    "title": "Conferma la Tua Email",
+    "emailSentTo": "Un'email verrà inviata a",
+    "resendInfo": "Se non la ricevi entro un minuto o due, clicca Rinvia.",
+    "confirmEmail": "conferma indirizzo email"
   }
 }

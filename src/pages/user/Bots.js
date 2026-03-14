@@ -17,6 +17,7 @@ import { makeStyles } from '@mui/styles';
 import { deepPurple } from '@mui/material/colors';
 import { getAuth } from 'firebase/auth';
 import LoadingButton from '@mui/lab/LoadingButton';
+import { useTranslation } from 'react-i18next';
 import useAuth from '../../hooks/useAuth';
 
 
@@ -62,6 +63,7 @@ const useStyles = makeStyles({
 
 
 const BotsList = () => {
+    const { t } = useTranslation();
     const dispatch = useDispatch();
     const { bots } = useSelector((state) => state.allBots);
     const { success } = useSelector((state) => state.subcribe);
@@ -130,7 +132,7 @@ const BotsList = () => {
           anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
         >
           <Alert severity="success" sx={{ width: '100%' }}>
-            successfull
+            {t('bots.successful')}
           </Alert>
         </Snackbar>
         <Snackbar
@@ -139,11 +141,11 @@ const BotsList = () => {
           anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
         >
           <Alert severity="error" sx={{ width: '100%' }}>
-            Deposit account before you  subcribe to a Bot
+            {t('bots.depositBeforeSubscribe')}
           </Alert>
         </Snackbar>
       <Typography variant="h4" gutterBottom align="center" sx={{color: "white"}}>
-        Ai Powered Trading Bots
+        {t('bots.title')}
       </Typography>
       <Grid container spacing={4}>
         {container && container.map((bot, index) => (
@@ -159,7 +161,7 @@ const BotsList = () => {
                   {bot.botName}
                 </Typography>
                 <Typography variant="body2" color="textSecondary" align="center">
-                  by {bot.creator}
+                  {t('bots.by')} {bot.creator}
                 </Typography>
                 <Box className={classes.bio}>
                   <Typography variant="body2" color="textSecondary">
@@ -167,26 +169,26 @@ const BotsList = () => {
                   </Typography>
                 </Box>
                 <Typography variant="body2" color="textSecondary">
-                  <strong>Win Rate:</strong> {bot.winRate}
+                  <strong>{t('bots.winRate')}</strong> {bot.winRate}
                 </Typography>
                 <Typography variant="body2" color="textSecondary">
-                  <strong>Loss Rate:</strong> {bot.lossRate}
+                  <strong>{t('bots.lossRate')}</strong> {bot.lossRate}
                 </Typography>
                 <Typography variant="body2" color="textSecondary">
-                  <strong>Total Trades:</strong> {bot.totalTrades}
+                  <strong>{t('bots.totalTrades')}</strong> {bot.totalTrades}
                 </Typography>
                 <Typography variant="body2" color="textSecondary">
-                  <strong>Total Losses:</strong> {bot.totalLosses}
+                  <strong>{t('bots.totalLosses')}</strong> {bot.totalLosses}
                 </Typography>
               </CardContent>
               <CardActions>
-                <LoadingButton  className={classes.button} color={bot.subscribed ? 'error' : 'primary'} loading={bot.loading} onClick={() => handleSubscribe(bot.id, index)}>{bot.subscribed ? 'Subscribed' : "Subscribe"}</LoadingButton>
+                <LoadingButton  className={classes.button} color={bot.subscribed ? 'error' : 'primary'} loading={bot.loading} onClick={() => handleSubscribe(bot.id, index)}>{bot.subscribed ? t('bots.subscribed') : t('bots.subscribe')}</LoadingButton>
                 <Button
                   className={classes.button}
                   size="small"
                   color="secondary"
                 >
-                  {bot.subscribers} Subscribers
+                  {bot.subscribers} {t('bots.subscribers')}
                 </Button>
               </CardActions>
             </Card>

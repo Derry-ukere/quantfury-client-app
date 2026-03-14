@@ -10,10 +10,12 @@ import { useParams, Link } from 'react-router-dom';
 import { Alert } from '@mui/material';
 import Snackbar from '@mui/material/Snackbar';
 
+import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from '../../redux/store';
 import { getDeposit } from '../../redux/slices/deposit/getDeposit';
 
 const ComfirmDeposit = () => {
+  const { t } = useTranslation();
   const params = useParams();
   const dispatch = useDispatch();
   const { cyptoAmount, walletId, id,qrCode } = useSelector((state) => state.getDepositReducer);
@@ -52,15 +54,15 @@ const ComfirmDeposit = () => {
           anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
         >
           <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
-            Copied !
+            {t('confirmDeposit.copied')}
           </Alert>
         </Snackbar>
         <div className="fade-appear-done fade-enter-done">
           <section className="row center">
             <div className="col l4 offset-l4 s12">
               <div className="card-panel">
-                <p>SEND {amount}</p>
-                <p>TO THE WALLET ADDRESS BELOW OR SCAN THE QR CODE WITH YOUR WALLET APP</p>
+                <p>{t('confirmDeposit.send')} {amount}</p>
+                <p>{t('confirmDeposit.toWalletAddress')}</p>
                 <div className="input-field">
                   <CopyToClipboard text={walletAddress} onCopy={() => setOpen(true)}>
                     <i className="material-icons prefix">content_copy</i>
@@ -75,15 +77,15 @@ const ComfirmDeposit = () => {
                 />
                 <br />
                 <br />
-                <Countdown date={Date.now() + 3000000} />,<p>Awaiting Payment</p>
+                <Countdown date={Date.now() + 3000000} />,<p>{t('confirmDeposit.awaitingPayment')}</p>
                 <br />
                 <Link className="btn" to={`/user/deposits/upload/${id}`}>
-                  UPLOAD PAYMENT PROOF
+                  {t('confirmDeposit.uploadPaymentProof')}
                 </Link>
                 <br />
                 <br />
                 <Link className="btn btn-secondary" to="/user/deposits/list">
-                  WAIT FOR CONFIRMATION
+                  {t('confirmDeposit.waitForConfirmation')}
                 </Link>
               </div>
             </div>

@@ -5,6 +5,7 @@ import LoadingButton from '@mui/lab/LoadingButton';
 import { Typography, Stack } from '@mui/material';
 
 //
+import { useTranslation } from 'react-i18next';
 import { UploadAvatar } from '../components/upload';
 
 // redux
@@ -12,6 +13,7 @@ import { useDispatch, useSelector } from '../redux/store';
 import { uploadIds } from '../redux/slices/uploads/uploadId';
 
 const Identity = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { success, isLoading } = useSelector((state) => state.uploadId);
@@ -66,11 +68,9 @@ const Identity = () => {
       <div className="row">
         <div className="col l4 s12 offset-l4">
           <div className="card-panel">
-            <h3 className="btn-color center">Verify Your Identity</h3>
+            <h3 className="btn-color center">{t('identity.title')}</h3>
             <p style={{ textAlign: 'justify' }}>
-              Please verify your identity by uploading a valid government issued identification card. You may experience
-              difficulties when uploading from an ios device. Make sure your browser has camera access in your ios
-              settings.
+              {t('identity.description')}
             </p>
             <center>
               <br />
@@ -96,8 +96,8 @@ const Identity = () => {
                               color: 'text.secondary',
                             }}
                           >
-                            Upload front ID -- Allowed *.jpeg, *.jpg, *.png, *.gif
-                            <br /> max size of 1mb
+                            {t('identity.frontId')}
+                            <br /> {t('identity.maxSize')}
                           </Typography>
                         }
                       />
@@ -120,8 +120,8 @@ const Identity = () => {
                               color: 'text.secondary',
                             }}
                           >
-                            Upload back ID -- Allowed *.jpeg, *.jpg, *.png, *.gif
-                            <br /> max size of 1mb
+                            {t('identity.backId')}
+                            <br /> {t('identity.maxSize')}
                           </Typography>
                         }
                       />
@@ -131,7 +131,7 @@ const Identity = () => {
 
                 <div>
                   <LoadingButton type="submit" variant='contained' fullWidth color='info' loading={isLoading}>
-                    Upload
+                    {t('identity.upload')}
                   </LoadingButton>
                 </div>
               </form>

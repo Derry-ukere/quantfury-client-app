@@ -1,14 +1,16 @@
 /* eslint-disable arrow-body-style */
 import React from 'react'
+import { useTranslation } from 'react-i18next';
 
  const WatchList = () => {
+  const { t } = useTranslation();
   return (
     <div>
         <main className="app-py-1" style={{height: '100vh'}}>
   <div className="fade-appear-done fade-enter-done">
     <div className="container ">
       <center>
-        <p><b>WATCH LIST</b></p><br /></center><br /><br />
+        <p><b>{t('watchList.title')}</b></p><br /></center><br /><br />
       <div className="container">
         <ul className="collection">
           <li className="collection-item app-py-1">

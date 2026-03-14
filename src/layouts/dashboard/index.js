@@ -2,20 +2,20 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import * as React from 'react';
 import { Link, Outlet } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
 // Hooks
 import useAuth from '../../hooks/useAuth';
 
 // components
 // import Footer from '../../components/DashboardFooter'; 
 import AdminDrawer from '../../components/DashboardDrawer';
+import LanguageSwitcher from '../../components/LanguageSwitcher';
 
 // config
 import {Appdetails} from '../../config';
 
 
 export default function SwipeableTemporaryDrawer() {
-  const { t } = useTranslation();
+
   const [state, setState] = React.useState(false);
 
 
@@ -48,11 +48,11 @@ export default function SwipeableTemporaryDrawer() {
                         </Link>
                       </li>
                     </ul>
-                    <ul className="right hide-on-med-and-down">
+                    <ul className="right">
                       <li>
-                        <Link to="/pages/contact">{t('common.contactUs')}</Link>
+                        <LanguageSwitcher />
                       </li>
-                      <li>
+                      <li className="hide-on-med-and-down">
                         <Link to="/">{displayName}</Link>
                       </li>
                     </ul>

@@ -7,15 +7,15 @@ import LoadingButton from '@mui/lab/LoadingButton';
 
 // redux
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { useDispatch,useSelector } from '../../redux/store';
 import { updateUser } from '../../redux/slices/user/updateDetails';
-
-
 // hooks
 import useAuth from '../../hooks/useAuth';
 
 
 const Details = () => {
+  const { t } = useTranslation();
   const { success, error, isLoading } = useSelector((state) => state.updateUserDetails);
 
   const dispatch = useDispatch();
@@ -68,10 +68,10 @@ const Details = () => {
         <div className="col l4 s12 offset-l4">
           <br />
           <div className="card-panel">
-            <h3 className="btn-color center">Your Details</h3>
+            <h3 className="btn-color center">{t('details.yourDetails')}</h3>
             <form autoComplete="off" onSubmit={ handleSubmit}>
               <div className="input-field">
-                <label className="active">country</label>
+                <label className="active">{t('details.country')}</label>
                 <select id="country" className="browser-default undefined"
                   value={typedcountry}
                   label="Select Coin"
@@ -337,17 +337,17 @@ const Details = () => {
                  onChange ={(e) => setState(e.target.value)}
                  />
                 <label className="active" htmlFor="state">
-                  state
+                  {t('details.state')}
                 </label>
               </div>
               <div className="input-field">
                 <input type="text" id="city" name="city" maxLength={300}
-                value = {City}  
+                value = {City}
                 onChange ={(e) => setCity(e.target.value)}
-                inputMode="text" 
+                inputMode="text"
                 required  />
                 <label className="active" htmlFor="city">
-                  city
+                  {t('details.city')}
                 </label>
               </div>
               <div className="input-field">
@@ -358,11 +358,11 @@ const Details = () => {
                   maxLength={300}
                   inputMode="text"
                   required
-                  value = {postCode}  
+                  value = {postCode}
                   onChange ={(e) => setPostCode(e.target.value)}
                 />
                 <label className="active" htmlFor="post_code">
-                  post code
+                  {t('details.postCode')}
                 </label>
               </div>
               <div className="input-field">
@@ -373,18 +373,18 @@ const Details = () => {
                   maxLength={300}
                   inputMode="text"
                   required
-                  value = {address}  
+                  value = {address}
                   onChange ={(e) => setAddres(e.target.value)}
-                  
+
                 />
                 <label className="active" htmlFor="street_address">
-                  street address
+                  {t('details.streetAddress')}
                 </label>
               </div>
               <div>
                 <div className="input-field">
                   <label className="active" htmlFor="mobile_number">
-                    mobile number
+                    {t('details.mobileNumber')}
                   </label>
                   <input
                     inputMode="decimal"
@@ -403,7 +403,7 @@ const Details = () => {
               <br />
               <div>
               <LoadingButton type="submit"  variant="contained"  color='info' className="btn btn-full" loading = {isLoading}>
-                  Next
+                  {t('details.next')}
               </LoadingButton>
               </div>
             </form>

@@ -242,5 +242,161 @@
   },
   "languageSwitcher": {
     "language": "Language"
+  },
+  "deposits": {
+    "newDeposit": "NEW DEPOSIT",
+    "noDepositYet": "NO DEPOSIT YET",
+    "deposit": "Deposit",
+    "pendingMessage": "Deposits will be pending until there are sufficent confirmations on the blockchain.",
+    "fetchingDeposits": "fetching all deposits ..."
+  },
+  "fundAccount": {
+    "title": "FUND YOUR ACCOUNT",
+    "viewPricing": "VIEW PRICING",
+    "buyCryptoNow": "BUY CRYPTO NOW",
+    "amount": "amount",
+    "paymentMethod": "Payment Method",
+    "destination": "Destination",
+    "proceed": "Proceed"
+  },
+  "confirmDeposit": {
+    "send": "SEND",
+    "toWalletAddress": "TO THE WALLET ADDRESS BELOW OR SCAN THE QR CODE WITH YOUR WALLET APP",
+    "awaitingPayment": "Awaiting Payment",
+    "uploadPaymentProof": "UPLOAD PAYMENT PROOF",
+    "waitForConfirmation": "WAIT FOR CONFIRMATION",
+    "copied": "Copied !"
+  },
+  "tradingPlans": {
+    "title": "Trading Plans",
+    "starterPackage": "STARTER PACKAGE",
+    "premiumPackage": "PREMIUM PACKAGE",
+    "masterPackage": "MASTER PACKAGE",
+    "proPackage": "PRO PACKAGE",
+    "minimum": "minimum",
+    "minDeposit": "Min Deposit",
+    "maxDeposit": "Max Deposit",
+    "referralBonus": "Referral Bonus",
+    "fullItSupport": "Full IT Support",
+    "purchasePlan": "PURCHASE PLAN"
+  },
+  "miningPlans": {
+    "title": "Mining Plans",
+    "weekContract1": "1 Week Contract",
+    "weekContract2": "2 Weeks Contract",
+    "weekContract3": "3 Weeks Contract",
+    "weekContract4": "4 Weeks Contract"
+  },
+  "pricing": {
+    "title": "Pricing",
+    "tradingPlans": "Trading Plans",
+    "miningPlans": "Mining Plans"
+  },
+  "traderRoom": {
+    "home": "HOME",
+    "binaryOptions": "BINARY OPTIONS",
+    "crypto": "Crypto",
+    "currencies": "Currencies",
+    "stocks": "Stocks",
+    "simple": "Simple",
+    "technical": "Technical",
+    "buy": "BUY",
+    "sell": "SELL",
+    "time": "time (minutes)",
+    "amount": "amount",
+    "deposit": "Deposit",
+    "depositBeforeTrade": "Deposit account before you take a trade !"
+  },
+  "experts": {
+    "title": "COPY EXPERT TRADERS",
+    "loadingTraders": "loading traders ...",
+    "wins": "Wins",
+    "losses": "Losses",
+    "winRate": "Win Rate",
+    "profitShare": "20% Profit Share",
+    "copied": "Copied",
+    "copyTrader": "Copy Trader",
+    "depositBeforeCopy": "Deposit account before you copy a trader !"
+  },
+  "bots": {
+    "title": "Ai Powered Trading Bots",
+    "successful": "successfull",
+    "depositBeforeSubscribe": "Deposit account before you subcribe to a Bot",
+    "winRate": "Win Rate:",
+    "lossRate": "Loss Rate:",
+    "totalTrades": "Total Trades:",
+    "totalLosses": "Total Losses:",
+    "subscribed": "Subscribed",
+    "subscribe": "Subscribe",
+    "subscribers": "Subscribers",
+    "by": "by"
+  },
+  "watchList": {
+    "title": "WATCH LIST"
+  },
+  "miningContracts": {
+    "title": "MY MINING CONTRACTS",
+    "noContracts": "YOU HAVE NO MINING CONTRACT AT THE MOMENT"
+  },
+  "market": {
+    "crypto": "Crypto",
+    "currencies": "Currencies",
+    "stocks": "Stocks"
+  },
+  "changePassword": {
+    "newPassword": "new password",
+    "confirmNewPassword": "confirm new password",
+    "update": "Update",
+    "passwordMustMatch": "Password must Match",
+    "passwordUpdated": "Password succesfully updated"
+  },
+  "details": {
+    "yourDetails": "Your Details",
+    "country": "country",
+    "state": "state",
+    "city": "city",
+    "postCode": "post code",
+    "streetAddress": "street address",
+    "mobileNumber": "mobile number",
+    "next": "Next",
+    "updateDetails": "Update Details",
+    "updateSuccess": "Your Details have been updated succesfully"
+  },
+  "profile": {
+    "email": "email",
+    "mobileNumber": "mobile number",
+    "name": "Name",
+    "postCode": "post code",
+    "city": "city",
+    "state": "state",
+    "country": "country"
+  },
+  "profilePhoto": {
+    "title": "Upload Profile Photo",
+    "helperText": "Upload Profile Picture -- Allowed *.jpeg, *.jpg, *.png, *.gif",
+    "maxSize": "max size of 1mb",
+    "upload": "upload",
+    "uploadSuccess": "Your Profile Photo have been uploaded successly !"
+  },
+  "uploadProof": {
+    "title": "Upload Payment Proof",
+    "helperText": "Allowed *.jpeg, *.jpg, *.png, *.gif",
+    "maxSize": "max size of 5mb",
+    "uploadButton": "upload payment proof",
+    "uploadSuccess": "Your Details have been uploaded successly !"
+  },
+  "identity": {
+    "title": "Verify Your Identity",
+    "description": "Please verify your identity by uploading a valid government issued identification card. You may experience difficulties when uploading from an ios device. Make sure your browser has camera access in your ios settings.",
+    "frontId": "Upload front ID -- Allowed *.jpeg, *.jpg, *.png, *.gif",
+    "backId": "Upload back ID -- Allowed *.jpeg, *.jpg, *.png, *.gif",
+    "maxSize": "max size of 1mb",
+    "upload": "Upload"
+  },
+  "verification": {
+    "title": "Comfirm Your Email",
+    "emailSentTo": "An email will be sent to",
+    "resendInfo": "If you don't received it in a minute or two, click Resend.",
+    "confirmEmail": "comfirm email address"
   }
 }

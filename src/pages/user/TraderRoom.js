@@ -8,6 +8,7 @@ import LoadingButton from '@mui/lab/LoadingButton';
 
 import { Alert } from '@mui/material';
 import Snackbar from '@mui/material/Snackbar';
+import { useTranslation } from 'react-i18next';
 import useAuth from '../../hooks/useAuth';
 
 // redux
@@ -19,6 +20,7 @@ import {  fetchUserTrades} from '../../redux/slices/trades/personalTrades';
 const tradeImageUrl = 'https://firebasestorage.googleapis.com/v0/b/trade-9c676.appspot.com/o/pair-icon-dashusd.img.svg?alt=media&token=35cc0066-a30c-4c8a-8d1a-7337db7488b9'
 
 const TraderRoom = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const { buying, selling } = useSelector((state) => state.registerTradeReducer);
   const { personalTrades } = useSelector((state) => state.personalTrades);
@@ -100,7 +102,7 @@ const TraderRoom = () => {
         anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
       >
         <Alert onClose={handleCloseTwo} severity="error" sx={{ width: '100%' }}>
-          Deposit account before you take a trade !
+          {t('traderRoom.depositBeforeTrade')}
         </Alert>
       </Snackbar>
 
@@ -114,7 +116,7 @@ const TraderRoom = () => {
                   <br />
                   <span className="material-icons notranslate">home</span>
                   <br />
-                  HOME
+                  {t('traderRoom.home')}
                   <br />
                   <br />
                 </Link>
@@ -125,7 +127,7 @@ const TraderRoom = () => {
                   <br />
                   <span className="material-icons notranslate">access_time</span>
                   <br />
-                  BINARY OPTIONS
+                  {t('traderRoom.binaryOptions')}
                   <br />
                 </Link>
               </li>
@@ -138,9 +140,9 @@ const TraderRoom = () => {
               <div className="col l5 hide-on-med-and-down">
                 <div style={{ marginRight: '1px', marginTop: '4px', marginBottom: '0px', display: 'inline-block' }}>
                   <select id="market" className="browser-default">
-                    <option value="Crypto">Crypto (40)</option>
-                    <option value="Currencies">Currencies (43)</option>
-                    <option value="Stocks">Stocks (82)</option>
+                    <option value="Crypto">{t('traderRoom.crypto')} (40)</option>
+                    <option value="Currencies">{t('traderRoom.currencies')} (43)</option>
+                    <option value="Stocks">{t('traderRoom.stocks')} (82)</option>
                   </select>
                 </div>
                 <div style={{ marginRight: '1px', marginTop: '4px', marginBottom: '0px', display: 'inline-block' }}>
@@ -150,8 +152,8 @@ const TraderRoom = () => {
                 </div>
                 <div style={{ marginRight: '1px', marginTop: '4px', marginBottom: '0px', display: 'inline-block' }}>
                   <select id="level" className="browser-default">
-                    <option value="Simple">Simple</option>
-                    <option value="Technical">Technical</option>
+                    <option value="Simple">{t('traderRoom.simple')}</option>
+                    <option value="Technical">{t('traderRoom.technical')}</option>
                   </select>
                 </div>
               </div>
@@ -179,7 +181,7 @@ const TraderRoom = () => {
                   to="/user/deposits/crypto"
                   style={{ paddingLeft: '1.8rem', paddingRight: '1.8rem' }}
                 >
-                  Deposit
+                  {t('traderRoom.deposit')}
                 </Link>
               </div>
             </div>
@@ -187,9 +189,9 @@ const TraderRoom = () => {
               <div className="col l1 s4">
                 <div style={{ marginRight: '1px', marginTop: '4px', marginBottom: '0px', display: 'inline-block' }}>
                   <select id="market" className="browser-default">
-                    <option value="Crypto">Crypto (40)</option>
-                    <option value="Currencies">Currencies (43)</option>
-                    <option value="Stocks">Stocks (82)</option>
+                    <option value="Crypto">{t('traderRoom.crypto')} (40)</option>
+                    <option value="Currencies">{t('traderRoom.currencies')} (43)</option>
+                    <option value="Stocks">{t('traderRoom.stocks')} (82)</option>
                   </select>
                 </div>
               </div>
@@ -207,8 +209,8 @@ const TraderRoom = () => {
               <div className="col l2 s4 ">
                 <div style={{ marginRight: '1px', marginTop: '4px', marginBottom: '0px', display: 'inline-block' }}>
                   <select id="level" className="browser-default">
-                    <option value="Simple">Simple</option>
-                    <option value="Technical">Technical</option>
+                    <option value="Simple">{t('traderRoom.simple')}</option>
+                    <option value="Technical">{t('traderRoom.technical')}</option>
                   </select>
                 </div>
               </div>
@@ -282,30 +284,30 @@ const TraderRoom = () => {
                 <form>
                   <div className="hide-on-large-only">
                     <LoadingButton type="button" className="green btn btn-full btn-large" onClick={() => trade('UP')} loading={buying}>
-                      BUY
+                      {t('traderRoom.buy')}
                     </LoadingButton>
                     <LoadingButton type="button" className="red btn btn-full btn-large" onClick={() => trade('DOWN')} loading={selling}>
-                      SELL
+                      {t('traderRoom.sell')}
                     </LoadingButton>
                   </div>
                   <div className="input-field">
-                    <label className="active">time (minutes)</label>
+                    <label className="active">{t('traderRoom.time')}</label>
                     <input min={1} max={59} id="time" type="number" value={amount} style={{ textAlign: 'center' }} onChange={(e) => setAmount(e.target.value)} />
                   </div>
 
                   <br />
                   <div className="input-field">
-                    <label className="active">amount</label>
+                    <label className="active">{t('traderRoom.amount')}</label>
                     <input min={100} id="time" type="number" value={tradeTime} style={{ textAlign: 'center' }} onChange={(e) => setTradeTime(e.target.value)} />
                   </div>
                   <br />
                   <br />
                   <div className="hide-on-med-and-down">
                     <LoadingButton type="button" className="green btn btn-full btn-large" onClick={() => trade('UP')} loading={buying}>
-                      BUY
+                      {t('traderRoom.buy')}
                     </LoadingButton>
                     <LoadingButton type="button" className="red btn btn-full btn-large" onClick={() => trade('DOWN')} loading={selling}>
-                      SELL
+                      {t('traderRoom.sell')}
                     </LoadingButton>
                   </div>
                 </form>
@@ -318,13 +320,13 @@ const TraderRoom = () => {
             <li className="tab">
               <Link title="Home" to="/user">
                 <span className="material-icons notranslate">home</span>
-                <span className="hide-on-small-only">Home</span>
+                <span className="hide-on-small-only">{t('common.home')}</span>
               </Link>
             </li>
             <li className="tab">
               <Link title="Binary Options" className="active" to="/user/ptraderoom">
                 <span className="material-icons notranslate">access_time</span>
-                <span className="hide-on-small-only">Binary Options</span>
+                <span className="hide-on-small-only">{t('traderRoom.binaryOptions')}</span>
               </Link>
             </li>
           </ul>

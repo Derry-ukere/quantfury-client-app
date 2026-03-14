@@ -2,8 +2,10 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const Deposits = () => {
+  const { t } = useTranslation();
   return (
     <main className="container" style={{ height: '100vh' }}>
       <br />
@@ -12,13 +14,13 @@ const Deposits = () => {
           <div className="col l8 s12">
             <center>
               <Link className="btn " to="/user/deposits/crypto">
-                NEW DEPOSIT
+                {t('deposits.newDeposit')}
               </Link>
             </center>
             <ul className="collection">
               <li className="collection-item app-py-2">
                 <p id="no-data" style={{ textAlign: 'center' }}>
-                  <span className="app-font-normal">NO DEPOSIT YET</span>
+                  <span className="app-font-normal">{t('deposits.noDepositYet')}</span>
                 </p>
               </li>
             </ul>
@@ -32,7 +34,7 @@ const Deposits = () => {
                     className="responsive-img"
                     style={{ maxHeight: '30vh' }}
                   />
-                  <h2 style={{ margin: '0px', padding: '0px' }}>Deposit</h2>
+                  <h2 style={{ margin: '0px', padding: '0px' }}>{t('deposits.deposit')}</h2>
                 </center>
               </li>
             </ul>

@@ -4,6 +4,7 @@ import React from 'react';
 import { Alert,Typography } from '@mui/material';
 import Snackbar from '@mui/material/Snackbar';
 import LoadingButton from '@mui/lab/LoadingButton';
+import { useTranslation } from 'react-i18next';
 import { UploadAvatar } from '../../components/upload';
 
 // redux
@@ -11,6 +12,7 @@ import { useDispatch,useSelector } from '../../redux/store';
 import { uploadProfilePic } from '../../redux/slices/uploads/uploadprofilepic';
 
 const UploadProof = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const {error, isLoading, success } = useSelector((state) => state.uploadprofilepic);
 
@@ -49,13 +51,13 @@ const UploadProof = () => {
           anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
         >
           <Alert  severity="success" sx={{ width: '100%' }}>
-            Your Profile Photo  have been uploaded successly !
+            {t('profilePhoto.uploadSuccess')}
           </Alert>
         </Snackbar>
         <div className="fade-appear-done fade-enter-done">
           <section className="container row">
             <div className="col l6 s12 offset-l3">
-              <h4 className="center">Upload Profile Photo</h4>
+              <h4 className="center">{t('profilePhoto.title')}</h4>
               <br />
               <div className="card-panel">
                 <form encType="multipart/form-data" onSubmit={uploadFIle}>
@@ -78,8 +80,8 @@ const UploadProof = () => {
                               color: 'text.secondary',
                             }}
                           >
-                            Upload Profile Picture -- Allowed *.jpeg, *.jpg, *.png, *.gif
-                            <br /> max size of 1mb
+                            {t('profilePhoto.helperText')}
+                            <br /> {t('profilePhoto.maxSize')}
                           </Typography>
                         }
                       />
@@ -89,7 +91,7 @@ const UploadProof = () => {
                   </div>
                   <div>
                   <LoadingButton type="submit" variant="contained" color='info' className="btn btn-full" loading={isLoading}>
-                    upload
+                    {t('profilePhoto.upload')}
                 </LoadingButton>
                   </div>
                 </form>

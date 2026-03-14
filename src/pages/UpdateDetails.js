@@ -8,10 +8,12 @@ import { Alert } from '@mui/material';
 import Snackbar from '@mui/material/Snackbar';
 
 // redux
+import { useTranslation } from 'react-i18next';
 import { useDispatch } from '../redux/store';
 import { updateUser } from '../redux/slices/user/updateDetails';
 
 const Details = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const [typedcountry, setCoutry] = React.useState('Afghanistan');
   const [City, setCity] = React.useState('');
@@ -67,17 +69,17 @@ const Details = () => {
           anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
         >
           <Alert onClose={handleClose} severity='success' sx={{ width: '100%' }}>
-            Your Deatils have been updated succesfully
+            {t('details.updateSuccess')}
           </Alert>
         </Snackbar>
       <div className="row">
         <div className="col l4 s12 offset-l4">
           <br />
           <div className="card-panel">
-            <h3 className="btn-color center">Your Details</h3>
+            <h3 className="btn-color center">{t('details.yourDetails')}</h3>
             <form autoComplete="off" onSubmit={ handleSubmit}>
               <div className="input-field">
-                <label className="active">country</label>
+                <label className="active">{t('details.country')}</label>
                 <select id="country" className="browser-default undefined"
                   value={typedcountry}
                   label="Select Coin"
@@ -342,17 +344,17 @@ const Details = () => {
                  onChange ={(e) => setState(e.target.value)}
                  />
                 <label className="active" htmlFor="state">
-                  state
+                  {t('details.state')}
                 </label>
               </div>
               <div className="input-field">
                 <input type="text" id="city" name="city" maxLength={300}
-                value = {City}  
+                value = {City}
                 onChange ={(e) => setCity(e.target.value)}
-                inputMode="text" 
+                inputMode="text"
                 required  />
                 <label className="active" htmlFor="city">
-                  city
+                  {t('details.city')}
                 </label>
               </div>
               <div className="input-field">
@@ -363,11 +365,11 @@ const Details = () => {
                   maxLength={300}
                   inputMode="text"
                   required
-                  value = {postCode}  
+                  value = {postCode}
                   onChange ={(e) => setPostCode(e.target.value)}
                 />
                 <label className="active" htmlFor="post_code">
-                  post code
+                  {t('details.postCode')}
                 </label>
               </div>
               <div className="input-field">
@@ -378,18 +380,18 @@ const Details = () => {
                   maxLength={300}
                   inputMode="text"
                   required
-                  value = {address}  
+                  value = {address}
                   onChange ={(e) => setAddres(e.target.value)}
-                  
+
                 />
                 <label className="active" htmlFor="street_address">
-                  street address
+                  {t('details.streetAddress')}
                 </label>
               </div>
               <div>
                 <div className="input-field">
                   <label className="active" htmlFor="mobile_number">
-                    mobile number
+                    {t('details.mobileNumber')}
                   </label>
                   <input
                     inputMode="decimal"
@@ -408,7 +410,7 @@ const Details = () => {
               <br />
               <div>
                 <button type="submit" className="btn btn-full">
-                  Update Details
+                  {t('details.updateDetails')}
                 </button>
               </div>
             </form>

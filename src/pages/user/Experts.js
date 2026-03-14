@@ -11,6 +11,7 @@ import { Alert } from '@mui/material';
 import VerifiedIcon from '@mui/icons-material/Verified';
 import Snackbar from '@mui/material/Snackbar';
 import LoadingButton from '@mui/lab/LoadingButton';
+import { useTranslation } from 'react-i18next';
 import useAuth from '../../hooks/useAuth';
 
 // redux
@@ -19,6 +20,7 @@ import { getAllTrader } from '../../redux/slices/traders/getTraders';
 import { copyTrader } from '../../redux/slices/traders/copyTrader';
 
 const Experts = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const { allTraders } = useSelector((state) => state.allTraders);
   const { success } = useSelector((state) => state.copyTraderReducer);
@@ -92,19 +94,19 @@ const Experts = () => {
           anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
         >
           <Alert severity="error" sx={{ width: '100%' }}>
-            Deposit account before you copy a trader !
+            {t('experts.depositBeforeCopy')}
           </Alert>
         </Snackbar>
         <div className="fade-appear-done fade-enter-done">
           <div className="row" style={{color: "white"}} >
             <center>
-              <b>COPY EXPERT TRADERS</b>
+              <b>{t('experts.title')}</b>
             </center>
             <br />
             <div className="col l6 s12 offset-l3">
               <ul className="collection" style={{ marginBottom: 50 }}>
                 {!container ? (
-                  <p>loading traders ...</p>
+                  <p>{t('experts.loadingTraders')}</p>
                 ) :
                   container.map((trader, index) => (
                     <div className="collection-item" key={trader.id}>
@@ -118,17 +120,17 @@ const Experts = () => {
                           />
                         </div>
                         <div className="col l7 s5" style={{ fontWeight: 'lighter', color : "black" }}  >
-                          <span>{trader.wins} Wins</span>
+                          <span>{trader.wins} {t('experts.wins')}</span>
                           <br />
-                          <span>{trader.losses} Losses</span>
+                          <span>{trader.losses} {t('experts.losses')}</span>
                           <br />
-                          <span>{trader.winRate} Win Rate</span>
+                          <span>{trader.winRate} {t('experts.winRate')}</span>
                           <br />
-                          <span>20% Profit Share</span>
+                          <span>{t('experts.profitShare')}</span>
                           <br />
                           <br />
                           <b>
-                            <LoadingButton variant="contained" color={trader.copied ? 'error' : 'success'} loading={trader.loading} onClick={() => UpdateStatus(trader.id, index, deposits)}>{trader.copied ? 'Copied' : "Copy Trader"}</LoadingButton>
+                            <LoadingButton variant="contained" color={trader.copied ? 'error' : 'success'} loading={trader.loading} onClick={() => UpdateStatus(trader.id, index, deposits)}>{trader.copied ? t('experts.copied') : t('experts.copyTrader')}</LoadingButton>
                           </b>
                         </div>
                         <br />

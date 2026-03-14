@@ -120,24 +120,6 @@ export default function Router() {
         // { path: 'upload-profile-photo', element: <ProfilePhoto /> },
       ],
     },
-    {
-      path: '/pages',
-      element: <MainLayout />,
-      children: [
-        { path: 'about-us', element: <About /> },
-        { path: 'contact', element: <Contact /> },
-        { path: 'privacy-policy', element: <Privacy /> },
-        { path: 'terms-of-service', element: <TermsOfService /> },
-        { path: 'forex-trading', element: <ForexTrading /> },
-        { path: 'stocks-trading', element: <StocksTrading /> },
-        { path: 'crypto-trading', element: <CryptoTrading /> },
-        { path: 'options-trading', element: <OptionsTrading /> },
-        { path: 'copy-expert-traders', element: <CopyTrading /> },
-        { path: 'about-mining', element: <Mining /> },
-        { path: 'bitcoin-mining', element: <BitcoinMining /> },
-        { path: 'dogecoin-mining', element: <DcoinMining /> },
-      ],
-    },
   ]);
 }
 
@@ -145,20 +127,8 @@ export default function Router() {
 const Signin = Loadable(lazy(() => import('../pages/Signin')));
 const Signup = Loadable(lazy(() => import('../pages/Signup')));
 const ForgotPassword = Loadable(lazy(() => import('../pages/ForgotPassword')));
-const Contact = Loadable(lazy(() => import('../pages/Contact')));
-const About = Loadable(lazy(() => import('../pages/AboutUs')));
-const Privacy = Loadable(lazy(() => import('../pages/Privacy')));
-const ForexTrading = Loadable(lazy(() => import('../pages/ForexTrading')));
-const StocksTrading = Loadable(lazy(() => import('../pages/StocksTrading')));
-const CryptoTrading = Loadable(lazy(() => import('../pages/CryptoTrading')));
-const OptionsTrading = Loadable(lazy(() => import('../pages/OptionsTrading')));
-const CopyTrading = Loadable(lazy(() => import('../pages/CopyExperts')));
-const Mining = Loadable(lazy(() => import('../pages/Mining')));
-const BitcoinMining = Loadable(lazy(() => import('../pages/BitcoinMining')));
-const DcoinMining = Loadable(lazy(() => import('../pages/DogecoinMining')));
 const Verification = Loadable(lazy(() => import('../pages/Verification')));
 const Identity = Loadable(lazy(() => import('../pages/Identity')));
-const TermsOfService = Loadable(lazy(() => import('../pages/TermsOfService')));
 
 // dashboard
 

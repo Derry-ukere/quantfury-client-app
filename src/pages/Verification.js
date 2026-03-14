@@ -9,11 +9,13 @@ import { Alert } from '@mui/material';
 
 
 // redux
+import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from '../redux/store';
 import { sendEmail } from '../redux/slices/user/emailVerification';
 
 
 const Verification = () => {
+  const { t } = useTranslation();
   const { isVerificationEmailSent, error, isLoading } = useSelector((state) => state.emailVerification);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -40,16 +42,16 @@ const Verification = () => {
             <div className="container">
               {error && <Alert severity="error">{error}</Alert>}
               <center>
-                <h3 className="btn-color">Comfirm Your Email</h3>
+                <h3 className="btn-color">{t('verification.title')}</h3>
                 <br />
                 <p>
-                  An email  will be sent to <b>{auth.currentUser.email}</b>
+                  {t('verification.emailSentTo')} <b>{auth.currentUser.email}</b>
                 </p>
                 <br />
-                <p>If you don't received it in a minute or two, click Resend.</p>
+                <p>{t('verification.resendInfo')}</p>
                 <br />
                 <LoadingButton type="submit" variant="contained" color='info' className="btn btn-full" loading={isLoading} onClick = {handleClick}>
-                  comfirm email address
+                  {t('verification.confirmEmail')}
                 </LoadingButton>
                 <br />
                 <br />
