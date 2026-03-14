@@ -3,8 +3,19 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
+const languages = [
+  { code: 'en', label: 'English' },
+  { code: 'it', label: 'Italiano' },
+];
+
 const Account = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const currentLang = i18n.language?.substring(0, 2) || 'it';
+
+  const handleLanguageChange = (code) => {
+    i18n.changeLanguage(code);
+  };
+
   return (
     <main className="app-py-1" style={{ height: '100vh' }}>
       <div className="fade-appear-done fade-enter-done">
@@ -120,6 +131,42 @@ const Account = () => {
                     {t('settings.uploadProfilePhoto')}
                   </li>
                 </Link>
+                <li className="collection-item bg" style={{ padding: '10px 20px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center' }}>
+                    <div
+                      style={{
+                        padding: '1rem 1rem 0.8rem',
+                        background: 'rgb(255, 135, 0)',
+                        borderRadius: '10px',
+                        display: 'inline-block',
+                        marginRight: '1rem',
+                      }}
+                    >
+                      <span
+                        className="material-icons notranslate"
+                        style={{ fontSize: '30px', margin: '0px', padding: '0px', color: 'white' }}
+                      >
+                        language
+                      </span>
+                    </div>
+                    <span>{t('languageSwitcher.language')}</span>
+                  </div>
+                  <div style={{ marginTop: '10px', display: 'flex', gap: '10px' }}>
+                    {languages.map((lang) => (
+                      <button
+                        key={lang.code}
+                        type="button"
+                        onClick={() => handleLanguageChange(lang.code)}
+                        className="btn"
+                        style={{
+                          background: currentLang === lang.code ? 'rgb(50, 167, 226)' : 'grey',
+                        }}
+                      >
+                        {lang.label}
+                      </button>
+                    ))}
+                  </div>
+                </li>
               </ul>
             </div>
           </div>

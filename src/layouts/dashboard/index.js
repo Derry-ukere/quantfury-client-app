@@ -9,7 +9,6 @@ import useAuth from '../../hooks/useAuth';
 // components
 // import Footer from '../../components/DashboardFooter'; 
 import AdminDrawer from '../../components/DashboardDrawer';
-import LanguageSwitcher from '../../components/LanguageSwitcher';
 
 // config
 import {Appdetails} from '../../config';
@@ -56,8 +55,6 @@ export default function SwipeableTemporaryDrawer() {
                       <li>
                         <Link to="/">{displayName}</Link>
                       </li>
-
-                      <li><LanguageSwitcher /></li>
                     </ul>
                   </div>
                 </nav>
