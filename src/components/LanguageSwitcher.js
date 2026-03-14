@@ -15,7 +15,7 @@ export default function LanguageSwitcher() {
 
   return (
     <select
-      value={i18n.language?.substring(0, 2) || 'en'}
+      value={i18n.language?.substring(0, 2) || 'it'}
       onChange={handleChange}
       style={{
         background: 'transparent',
