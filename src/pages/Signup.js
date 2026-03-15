@@ -40,7 +40,7 @@ export default function Signin() {
                   <RegisterForm />
                   <br />
                   <p>
-                    {t('auth.alreadyHaveAccount')} <Link to="/">{t('common.signIn')}</Link>
+                    {t('auth.alreadyHaveAccount')} <Link to="/signin">{t('common.signIn')}</Link>
                   </p>
                 </center>
               </div>

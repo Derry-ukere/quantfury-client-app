@@ -91,11 +91,11 @@ export default function InReview({account_status}) {
               <ForbiddenIllustration sx={{ height: 260, my: { xs: 5, sm: 10 } }} />
             </m.div>
              </div>)}
-            <>
+            {account_status !== 'void' && (
             <Button  size="large" variant="contained"  style={{marginTop : 8}} component={RouterLink} onClick={handleClick}>
               {t('common.goToHome')}
             </Button>
-            </>
+            )}
           </Box>
         </Container>
       </RootStyle>

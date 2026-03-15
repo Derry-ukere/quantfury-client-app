@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Container } from '@mui/material';
 
 import useAuth from '../hooks/useAuth';
+import LoadingScreen from '../components/LoadingScreen';
 
 import Page404 from '../components/account-status/UserAccountStatus'
 
@@ -15,16 +16,21 @@ RoleBasedGuard.propTypes = {
 };
 
 const useCurrentRole = () => {
-  const { user } = useAuth();  
+  const { user } = useAuth();
   const {account_status} = user
   // Logic here to get current user role
   return account_status;
 };
 
 export default function RoleBasedGuard({ accessibleRoles, children }) {
+  const { isInitialized } = useAuth();
   const currentRole = useCurrentRole();
-  
-  if (!accessibleRoles.includes(currentRole)) {  
+
+  if (!isInitialized) {
+    return <LoadingScreen />;
+  }
+
+  if (!accessibleRoles.includes(currentRole)) {
     return (
       <Container>
         <Page404  account_status = {currentRole}/>

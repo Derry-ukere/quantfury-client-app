@@ -2,6 +2,8 @@ import PropTypes from 'prop-types';
 import { Navigate } from 'react-router-dom';
 // hooks
 import useAuth from '../hooks/useAuth';
+// components
+import LoadingScreen from '../components/LoadingScreen';
 
 // ----------------------------------------------------------------------
 
@@ -10,12 +12,15 @@ GuestGuard.propTypes = {
 };
 
 export default function GuestGuard({ children }) {
-const { isAuthenticated } = useAuth();
+  const { isAuthenticated, isInitialized } = useAuth();
 
-if (isAuthenticated) {
-  return <Navigate to={ '/user/signup/step-two'} />;
+  if (!isInitialized) {
+    return <LoadingScreen />;
+  }
+
+  if (isAuthenticated) {
+    return <Navigate to={'/user/signup/step-two'} />;
+  }
+
+  return <>{children}</>;
 }
-
-return <>{children}</>;
-}
-

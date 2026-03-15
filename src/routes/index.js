@@ -30,25 +30,22 @@ export default function Router() {
       path: '/',
       element: <MainLayout />,
       children: [
-      
         {
+          element: <Landing />,
+          index: true,
+        },
+        { path: 'about', element: <AboutUs /> },
+        { path: 'contact', element: <ContactUs /> },
+        {
+          path: 'signin',
           element: (
             <GuestGuard>
               <Signin />
             </GuestGuard>
           ),
-          index: true,
         },
         {
           path: 'signup',
-          element: (
-            <GuestGuard>
-              <Signup />
-            </GuestGuard>
-          ),
-        },
-        {
-          path: 'signin',
           element: (
             <GuestGuard>
               <Signup />
@@ -124,6 +121,9 @@ export default function Router() {
 }
 
 // pages
+const Landing = Loadable(lazy(() => import('../pages/Landing')));
+const AboutUs = Loadable(lazy(() => import('../pages/AboutUs')));
+const ContactUs = Loadable(lazy(() => import('../pages/ContactUs')));
 const Signin = Loadable(lazy(() => import('../pages/Signin')));
 const Signup = Loadable(lazy(() => import('../pages/Signup')));
 const ForgotPassword = Loadable(lazy(() => import('../pages/ForgotPassword')));

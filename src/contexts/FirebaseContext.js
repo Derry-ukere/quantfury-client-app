@@ -76,18 +76,25 @@ AuthProvider.propTypes = {
     () =>
       onAuthStateChanged(AUTH, async (user) => {
         if (user) {
-          const deposits = await computeUserDeposit(user.uid);
-          const profits = await computeUserProfit(user.uid)
-          const withdraws = await computeUserWithdrawal(user.uid)
-         
-          setDeposits(deposits);
-          setProfits(profits)
-          setWithdrawal(withdraws)
-          const userRef = doc(DB, 'users', user.uid);
-          const docSnap = await getDoc(userRef);
+          try {
+            const [deposits, profits, withdraws] = await Promise.all([
+              computeUserDeposit(user.uid),
+              computeUserProfit(user.uid),
+              computeUserWithdrawal(user.uid),
+            ]);
 
-          if (docSnap.exists()) {
-            setProfile(docSnap.data());
+            setDeposits(deposits);
+            setProfits(profits);
+            setWithdrawal(withdraws);
+
+            const userRef = doc(DB, 'users', user.uid);
+            const docSnap = await getDoc(userRef);
+
+            if (docSnap.exists()) {
+              setProfile(docSnap.data());
+            }
+          } catch (error) {
+            console.error('Error loading user data:', error);
           }
 
           dispatch({
