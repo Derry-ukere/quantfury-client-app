@@ -15,11 +15,7 @@ export default function MainLayout() {
   const [menuOpen, setMenuOpen] = React.useState(false);
   const { pathname } = useLocation();
 
-  const navLinks = [
-    { to: '/', label: t('common.home') },
-    { to: '/about', label: t('common.aboutUs') },
-    { to: '/contact', label: t('common.contactUs') },
-  ];
+  const navLinks = [];
 
   const isActive = (path) => pathname === path;
 

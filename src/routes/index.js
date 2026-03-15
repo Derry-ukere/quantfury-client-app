@@ -1,6 +1,6 @@
 // react
 import { Suspense, lazy } from 'react';
-import { useRoutes, useLocation } from 'react-router-dom';
+import { useRoutes, useLocation, Navigate } from 'react-router-dom';
 import MainLayout from '../layouts/main';
 import DashboardLayout from '../layouts/dashboard';
 
@@ -31,11 +31,9 @@ export default function Router() {
       element: <MainLayout />,
       children: [
         {
-          element: <Landing />,
+          element: <Navigate to="/signin" replace />,
           index: true,
         },
-        { path: 'about', element: <AboutUs /> },
-        { path: 'contact', element: <ContactUs /> },
         {
           path: 'signin',
           element: (
@@ -121,9 +119,6 @@ export default function Router() {
 }
 
 // pages
-const Landing = Loadable(lazy(() => import('../pages/Landing')));
-const AboutUs = Loadable(lazy(() => import('../pages/AboutUs')));
-const ContactUs = Loadable(lazy(() => import('../pages/ContactUs')));
 const Signin = Loadable(lazy(() => import('../pages/Signin')));
 const Signup = Loadable(lazy(() => import('../pages/Signup')));
 const ForgotPassword = Loadable(lazy(() => import('../pages/ForgotPassword')));

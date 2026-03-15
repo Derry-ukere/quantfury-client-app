@@ -160,7 +160,7 @@ export const userModel = {
 export const Appdetails = {
 name : process.env.REACT_APP_NAME,
 email : process.env.REACT_APP_EMAIL,
-logo : process.env.REACT_APP_LOGO,
+logo : process.env.REACT_APP_LOGO || '/assets/images/site/logo.svg',
 address : process.env.REACT_APP_ADDRESS,
 phone: process.env.REACT_APP_PHONE_NUMBER,
 logoHeader : process.env.REACT_APP_LOGO_HEADER,
